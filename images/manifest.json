@@ -1,0 +1,204 @@
+[
+  {
+    "index": 1,
+    "status": "extracted",
+    "file": "01-image-Ba6WwMSC.png",
+    "bytes": 109895,
+    "sha256": "9e2de2811d26c062f2f6f8bc7c8ebdfb4c794e835fb48435fd9bca5ae9b8c6cd",
+    "mime": "image/png",
+    "original_filename": "image.png",
+    "part_id": "prt_efb2969e6002BeRfk7Ba6WwMSC",
+    "message_id": "msg_efb2969e3001gGPfgXEPugnpkF",
+    "time_created": 1782330255922,
+    "session_id": "ses_104e568b6ffe7p9eJmX2FBBady",
+    "session_title": "Website scraped for 3D animation rebuild",
+    "directory": "/Users/gajendranc/pgit/website",
+    "source_db": "/Users/gajendranc/.local/share/opencode.restoredcrash-20260625-025545/opencode.db"
+  },
+  {
+    "index": 2,
+    "status": "extracted",
+    "file": "02-ChatGPT Image Jun 25_ 2026_ 12_46_42 AM-qTdPf1ka.png",
+    "bytes": 1290671,
+    "sha256": "65bacd783365ba7f2a1728a1158c0156ee8bed0f5b1e4d98397d9867530ff4da",
+    "mime": "image/png",
+    "original_filename": "ChatGPT Image Jun 25, 2026, 12_46_42 AM.png",
+    "part_id": "prt_efb2a04f30021LW80ZqTdPf1ka",
+    "message_id": "msg_efb2a04f20011CFId2LT1pZ6MG",
+    "time_created": 1782330296068,
+    "session_id": "ses_104e568b6ffe7p9eJmX2FBBady",
+    "session_title": "Website scraped for 3D animation rebuild",
+    "directory": "/Users/gajendranc/pgit/website",
+    "source_db": "/Users/gajendranc/.local/share/opencode.restoredcrash-20260625-025545/opencode.db"
+  },
+  {
+    "index": 3,
+    "status": "extracted",
+    "file": "03-profile-inline-b46ff584.png",
+    "bytes": 2166868,
+    "sha256": "b46ff5843fcca86465c1df730f6f387d55951dd469638d96b330bc07f226dc12",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 4,
+    "status": "extracted",
+    "file": "04-profile-inline-d184a26a.png",
+    "bytes": 3051363,
+    "sha256": "d184a26a6b38c75684547e1c077ea96e264c9f65a0ce027962bd86ae63d995ab",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 5,
+    "status": "extracted",
+    "file": "05-profile-inline-aec59b68.png",
+    "bytes": 3234753,
+    "sha256": "aec59b6866dcce40d3d7e7136370c289d2bc93d3514bed3eb6e0b723d9c2a237",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 6,
+    "status": "extracted",
+    "file": "06-profile-inline-1e311136.png",
+    "bytes": 2463263,
+    "sha256": "1e311136716c4d2e1e7186bc82a80d72fb088dcd62e4ccb6ccb692dd7e9bd927",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 7,
+    "status": "extracted",
+    "file": "07-profile-inline-f54f05c1.png",
+    "bytes": 4526600,
+    "sha256": "f54f05c14aeda6edd30f5f0a607ab9a6b221daf99011bede189c2c5e41436b5a",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 8,
+    "status": "extracted",
+    "file": "08-profile-inline-3b46d198.png",
+    "bytes": 2722330,
+    "sha256": "3b46d198fec048f1b0f283c795937befb794ea63f2933d17cc8f4ded62bb1daf",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 9,
+    "status": "extracted",
+    "file": "09-profile-inline-eed7188d.png",
+    "bytes": 4514304,
+    "sha256": "eed7188d23522bea7982e083c15fcb51c84f6dea4566a0439cddb60cc42b5591",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 10,
+    "status": "extracted",
+    "file": "10-profile-inline-e7130596.png",
+    "bytes": 3851390,
+    "sha256": "e7130596baa2cdbcfad036d94fa63c03d832357206ee614841b31d0bc5c95956",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 11,
+    "status": "extracted",
+    "file": "11-profile-inline-e1e20fc6.png",
+    "bytes": 2416358,
+    "sha256": "e1e20fc67bf4bbff469a8c5b94755a1126bdebd32296e3380ddaaa05a736f756",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 12,
+    "status": "extracted",
+    "file": "12-profile-inline-71f9f5b7.png",
+    "bytes": 2203719,
+    "sha256": "71f9f5b733a56e17ef8cc12e8849f969f234a0729c4ee14df72d5eeb2fc92e27",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 13,
+    "status": "extracted",
+    "file": "13-profile-inline-ca55da19.png",
+    "bytes": 3269549,
+    "sha256": "ca55da19b15f306d1dce08a870aa9173ddc8b9af2181a52e93071cfb5b9a9ec6",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 14,
+    "status": "extracted",
+    "file": "14-profile-inline-0b1209df.png",
+    "bytes": 3575749,
+    "sha256": "0b1209df527b2b5a80aa9136a8614e87b5f82f8862db59828bfd863d237ea48b",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 15,
+    "status": "extracted",
+    "file": "15-profile-inline-9a580db2.png",
+    "bytes": 3566463,
+    "sha256": "9a580db2294beb78b926b5eea3cf4352c59f6e3225ec45a2421be939368941b5",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 16,
+    "status": "extracted",
+    "file": "16-profile-inline-28fd06f1.png",
+    "bytes": 4299215,
+    "sha256": "28fd06f1263ff881e49f89115443e6df59f507600fd75ead3b0f0b748aadd0a0",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 17,
+    "status": "extracted",
+    "file": "17-profile-inline-7de59b87.png",
+    "bytes": 2683080,
+    "sha256": "7de59b87c7de562f7ea6a031eb929bd2e4239f74ad765f78cd9e42e735aee736",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 18,
+    "status": "extracted",
+    "file": "18-profile-inline-edc8864c.png",
+    "bytes": 995835,
+    "sha256": "edc8864c7758d57263a50c9d2350623451541590c625a3b573d0dec6fc4f86f7",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/opencode.global.dat",
+    "source": "electron-profile-inline-data-image"
+  },
+  {
+    "index": 19,
+    "status": "extracted",
+    "file": "19-profile-inline-47a49f5f.png",
+    "bytes": 35124,
+    "sha256": "47a49f5fdf3b3c02d7b8f95b527b5b64c4fc88c74be558feb7221ce73cab29a3",
+    "mime": "image/png",
+    "source_profile_file": "/Users/gajendranc/Library/Application Support/ai.opencode.desktop.backup/Cache/Cache_Data/0257b6a4302edd83_0",
+    "source": "electron-profile-inline-data-image"
+  }
+]

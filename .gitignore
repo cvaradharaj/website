@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Root workspace keeps a static site and a nested Next.js app
+# Ignore build/dependency artifacts for nested app
+control-standards/node_modules/
+control-standards/.next/
+control-standards/out/
+
+# Generic Node artifacts
+node_modules/
+.next/
+out/

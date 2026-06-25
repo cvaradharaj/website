@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Variable.woff2') format('woff2');
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+
+  --color-slate-950: #070714;
+  --color-slate-900: #0c0c24;
+  --color-slate-800: #14143a;
+  --color-slate-700: #1e1e4a;
+  --color-slate-600: #2a2a5a;
+  --color-slate-500: #4a4a7a;
+  --color-slate-400: #7a7aaa;
+  --color-slate-300: #aaaad4;
+
+  --color-blue-950: #0a0a2a;
+  --color-blue-900: #0f0f4a;
+  --color-blue-500: #4488ff;
+  --color-blue-400: #66aaff;
+  --color-cyan-400: #00ddff;
+  --color-indigo-500: #6366f1;
+  --color-indigo-400: #818cf8;
+
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.06);
+  --color-glass-hover: rgba(255, 255, 255, 0.06);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #14143a #070714;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-slate-950);
+    color: #e0e0f0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #070714; }
+  ::-webkit-scrollbar-thumb { background: #14143a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #1e1e4a; }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(64px);
+    -webkit-backdrop-filter: blur(64px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 30px rgba(0, 221, 255, 0.1), 0 0 60px rgba(0, 221, 255, 0.04);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 30px rgba(68, 136, 255, 0.1), 0 0 60px rgba(68, 136, 255, 0.04);
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #00ddff, #4488ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #4488ff, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .aurora {
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 40%, rgba(68, 136, 255, 0.12), transparent),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0, 221, 255, 0.08), transparent),
+      radial-gradient(ellipse 50% 40% at 50% 80%, rgba(99, 102, 241, 0.06), transparent);
+  }
+
+  .aurora-subtle {
+    background:
+      radial-gradient(ellipse 60% 40% at 30% 30%, rgba(68, 136, 255, 0.06), transparent),
+      radial-gradient(ellipse 40% 30% at 70% 70%, rgba(0, 221, 255, 0.04), transparent);
+  }
+
+  .mesh-gradient {
+    background:
+      conic-gradient(from 230deg at 50% 50%, rgba(68, 136, 255, 0.08), rgba(0, 221, 255, 0.04), rgba(99, 102, 241, 0.06), rgba(68, 136, 255, 0.08));
+    filter: blur(80px);
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto w-full;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 { perspective: 1000px; }
+  .preserve-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; }
+}
