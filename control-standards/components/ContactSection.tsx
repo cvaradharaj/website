@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import { Cpu, Mail, Phone, MapPin, Send, MessageCircle, ArrowRight, Clock } from 'lucide-react';
 
 export default function ContactSection() {
   return (
@@ -17,12 +17,20 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-xs font-mono text-blue-400/60 tracking-[0.2em] uppercase">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 text-xs font-mono text-blue-400/80 tracking-[0.15em] uppercase mb-6">
+            <MessageCircle className="w-3 h-3" />
             Get in Touch
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4">
-            Start Your <span className="text-gradient-blue">Project</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-4 leading-tight">
+            Let&apos;s Discuss How We Can Help{' '}
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">
+              Transform Your Operations
+            </span>
           </h2>
+          <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+            For enterprise solutions and custom requirements, reach out to our engineering team.
+            We&apos;ll schedule a consultation and discuss how our expertise can solve your specific challenges.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
@@ -38,6 +46,12 @@ export default function ContactSection() {
               onSubmit={(e) => e.preventDefault()}
               className="glass-strong rounded-3xl p-8 space-y-5 border-white/[0.04]"
             >
+              <div className="flex items-center gap-3 mb-2">
+                <div className="liquid-glass-icon w-8 h-8 rounded-lg">
+                  <Mail className="w-4 h-4 icon-inner text-blue-400" />
+                </div>
+                <span className="text-sm font-semibold text-white">Send us a message</span>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -64,6 +78,7 @@ export default function ContactSection() {
                 <option>Electrical Engineering / Panels</option>
                 <option>Machine Modernization</option>
                 <option>Process Improvement</option>
+                <option>AI & Analytics Solutions</option>
                 <option>Other</option>
               </select>
               <textarea
@@ -73,10 +88,10 @@ export default function ContactSection() {
               />
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-blue-500 hover:bg-blue-400 text-white font-semibold text-sm transition-all duration-300 shadow-xl shadow-blue-500/20"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white font-semibold text-sm transition-all duration-300 shadow-xl shadow-blue-500/20"
               >
                 <Send className="w-4 h-4" />
-                Submit Inquiry
+                Send Message
               </button>
             </form>
           </motion.div>
@@ -91,8 +106,8 @@ export default function ContactSection() {
           >
             <div className="glass-strong rounded-3xl p-8 space-y-6 border-white/[0.04]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                  <Cpu className="w-5 h-5 text-blue-400" />
+                <div className="liquid-glass-icon w-10 h-10 rounded-xl">
+                  <Cpu className="w-5 h-5 icon-inner text-blue-400" />
                 </div>
                 <div className="text-sm font-bold">
                   <span className="text-white">CONTROL</span>
@@ -102,8 +117,10 @@ export default function ContactSection() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3 text-sm text-slate-400">
-                  <MapPin className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
-                  <span className="leading-relaxed">
+                  <div className="liquid-glass-icon w-8 h-8 rounded-lg flex-shrink-0">
+                    <MapPin className="w-4 h-4 icon-inner text-cyan-400" />
+                  </div>
+                  <span className="leading-relaxed pt-1">
                     2nd Floor, Punyakoti House, APC Layout,
                     <br />
                     Lakeshore Gardens, Vidhyaranyapura Post,
@@ -114,45 +131,48 @@ export default function ContactSection() {
 
                 <a
                   href="tel:+919730644552"
-                  className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+                  className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-400 transition-colors group"
                 >
-                  <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                  +91 9730644552
+                  <div className="liquid-glass-icon w-8 h-8 rounded-lg flex-shrink-0">
+                    <Phone className="w-4 h-4 icon-inner text-cyan-400 group-hover:text-cyan-300" />
+                  </div>
+                  <span className="pt-1">+91 9730644552</span>
                 </a>
 
                 <a
                   href="mailto:info@controlstandards.in"
-                  className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-400 transition-colors"
+                  className="flex items-center gap-3 text-sm text-slate-400 hover:text-cyan-400 transition-colors group"
                 >
-                  <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                  info@controlstandards.in
+                  <div className="liquid-glass-icon w-8 h-8 rounded-lg flex-shrink-0">
+                    <Mail className="w-4 h-4 icon-inner text-cyan-400 group-hover:text-cyan-300" />
+                  </div>
+                  <span className="pt-1">info@controlstandards.in</span>
                 </a>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.04]">
+              <div className="pt-4 border-t border-white/[0.04] space-y-3">
                 <a
                   href="https://wa.me/919730644552"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium hover:bg-green-500/20 transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium hover:bg-green-500/20 transition-all w-full"
                 >
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp Engineering Support
+                  <ArrowRight className="w-3 h-3 ml-auto" />
                 </a>
               </div>
             </div>
 
-            {/* Map */}
-            <div className="rounded-2xl overflow-hidden glass border-white/[0.03] h-[200px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0!2d77.59!3d13.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAxJzQ4LjAiTiA3N8KwMzUnMjQuMCJF!5e0!3m2!1sen!2sin!4v1"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: 'invert(0.9) hue-rotate(180deg) saturate(0.5)' }}
-                allowFullScreen
-                loading="lazy"
-                title="Control Standards — Bengaluru Office"
-              />
+            {/* Quick response */}
+            <div className="glass rounded-2xl p-5 border-white/[0.03]">
+              <div className="flex items-center gap-3 text-sm text-slate-400">
+                <Clock className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                <span>
+                  Enterprise inquiries typically responded to within{' '}
+                  <strong className="text-white">4 hours</strong>
+                </span>
+              </div>
             </div>
           </motion.div>
         </div>

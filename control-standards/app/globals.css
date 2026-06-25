@@ -7,7 +7,7 @@
 }
 
 @theme {
-  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Ubuntu', 'Inter', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 
   --color-slate-950: #070714;
@@ -30,10 +30,6 @@
   --color-glass: rgba(255, 255, 255, 0.03);
   --color-glass-border: rgba(255, 255, 255, 0.06);
   --color-glass-hover: rgba(255, 255, 255, 0.06);
-
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
 }
 
 @layer base {
@@ -81,6 +77,73 @@
   .glass-hover:hover {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Liquid Glass Icon */
+  .liquid-glass-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow:
+      0 4px 24px rgba(0,0,0,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(255,255,255,0.05);
+  }
+
+  .liquid-glass-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255,255,255,0.05),
+      transparent,
+      rgba(255,255,255,0.05),
+      transparent
+    );
+    animation: liquid-rotate 6s linear infinite;
+  }
+
+  @keyframes liquid-rotate {
+    to { transform: rotate(360deg); }
+  }
+
+  .liquid-glass-icon .icon-inner {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  /* Shimmer shine on hover */
+  .liquid-glass-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255,255,255,0.1) 45%,
+      rgba(255,255,255,0.15) 50%,
+      rgba(255,255,255,0.1) 55%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  .liquid-glass-icon:hover::after {
+    opacity: 1;
   }
 
   .glow-cyan {
