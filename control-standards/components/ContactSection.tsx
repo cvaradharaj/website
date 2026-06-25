@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Mail, Phone, MapPin, Send, MessageCircle, ArrowRight, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, ArrowRight, Clock } from 'lucide-react';
 
 export default function ContactSection() {
   return (
@@ -106,13 +106,11 @@ export default function ContactSection() {
           >
             <div className="glass-strong rounded-3xl p-8 space-y-6 border-white/[0.04]">
               <div className="flex items-center gap-3">
-                <div className="liquid-glass-icon w-10 h-10 rounded-xl">
-                  <Cpu className="w-5 h-5 icon-inner text-blue-400" />
-                </div>
-                <div className="text-sm font-bold">
-                  <span className="text-white">CONTROL</span>
-                  <span className="text-blue-400 ml-1">STANDARDS</span>
-                </div>
+                <img
+                  src="/logo-sm.png"
+                  alt="Control Standards"
+                  className="h-8 w-auto brightness-0 invert opacity-80"
+                />
               </div>
 
               <div className="space-y-4">

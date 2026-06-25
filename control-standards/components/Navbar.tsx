@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Cpu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const links = [
@@ -20,14 +20,12 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-3xl border-b border-white/[0.03]" />
       <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-            <Cpu className="w-4 h-4 text-blue-400" />
-          </div>
-          <div className="text-sm font-semibold tracking-tight">
-            <span className="text-white">CONTROL</span>
-            <span className="text-blue-400 ml-1">STANDARDS</span>
-          </div>
+        <a href="#" className="flex items-center group">
+          <img
+            src="/logo-sm.png"
+            alt="Control Standards"
+            className="h-7 sm:h-8 w-auto brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+          />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">

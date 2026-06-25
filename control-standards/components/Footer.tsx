@@ -1,7 +1,5 @@
 'use client';
 
-import { Cpu } from 'lucide-react';
-
 const footerLinks = {
   Services: ['Industrial Automation', 'Electrical Engineering', 'Machine Modernization', 'Process Improvement'],
   Industries: ['Packaging', 'Printing', 'Film', 'Metallizing', 'Coating', 'Textile', 'Steel', 'Food'],
@@ -17,14 +15,12 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                <Cpu className="w-4 h-4 text-blue-400" />
-              </div>
-              <div className="text-xs font-bold">
-                <span className="text-white">CONTROL</span>
-                <span className="text-blue-400 ml-1">STANDARDS</span>
-              </div>
+            <div className="mb-4">
+              <img
+                src="/logo-sm.png"
+                alt="Control Standards"
+                className="h-8 w-auto brightness-0 invert opacity-80"
+              />
             </div>
             <p className="text-xs text-slate-600 leading-relaxed max-w-xs">
               Est. 1999 · 25+ Years of Engineering Excellence
