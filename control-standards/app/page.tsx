@@ -12,8 +12,8 @@ import CaseStudies from '@/components/CaseStudies';
 import Testimonials from '@/components/Testimonials';
 import DataProtection from '@/components/DataProtection';
 import DeploymentSection from '@/components/DeploymentSection';
-import SalesResourceCenter from '@/components/SalesResourceCenter';
 import ContactSection from '@/components/ContactSection';
+import DigitalSolutionsSection from '@/components/DigitalSolutionsSection';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 import WhatWhySection from '@/components/WhatWhySection';
@@ -35,7 +35,7 @@ export default function Home() {
       <Testimonials />
       <DataProtection />
       <DeploymentSection />
-      <SalesResourceCenter />
+      <DigitalSolutionsSection />
       <ContactSection />
       <Footer />
       <FloatingCTA />
