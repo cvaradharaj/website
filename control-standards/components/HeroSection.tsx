@@ -114,7 +114,7 @@ export default function HeroSection() {
               {['Siemens', 'Beckhoff', 'Schneider', 'Mitsubishi'].map((brand) => (
                 <span
                   key={brand}
-                  className="text-xs font-mono text-slate-600 tracking-widest uppercase"
+                  className="text-xs font-mono text-slate-500 tracking-widest uppercase"
                 >
                   {brand}
                 </span>
@@ -209,7 +209,7 @@ export default function HeroSection() {
         transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] font-mono text-slate-600 tracking-[0.2em] uppercase">Scroll</span>
+        <span className="text-[10px] font-mono text-slate-500 tracking-[0.2em] uppercase">Scroll</span>
         <motion.div
           className="w-px h-8 bg-gradient-to-b from-slate-600 to-transparent"
           animate={{ scaleY: [1, 0.5, 1] }}

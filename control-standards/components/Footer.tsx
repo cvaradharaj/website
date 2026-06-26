@@ -22,10 +22,10 @@ export default function Footer() {
                 className="h-8 w-auto brightness-0 invert opacity-80"
               />
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed max-w-xs">
+            <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
               Est. 1999 · 25+ Years of Engineering Excellence
             </p>
-            <p className="text-xs text-slate-700 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Global Operations: Indonesia · Turkey · South America · China
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-xs text-slate-600 hover:text-slate-300 transition-colors"
+                      className="text-xs text-slate-400 hover:text-slate-300 transition-colors"
                     >
                       {link}
                     </a>
@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/[0.03] py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
           <p>&copy; {new Date().getFullYear()} Control Standards. All rights reserved.</p>
           <p className="font-mono">Siemens · Beckhoff · Schneider · Mitsubishi — Certified Partners</p>
         </div>

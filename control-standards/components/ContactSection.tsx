@@ -56,18 +56,18 @@ export default function ContactSection() {
                 <input
                   type="text"
                   placeholder="Full Name *"
-                  className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors"
+                  className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-blue-500/40 transition-colors"
                 />
                 <input
                   type="email"
                   placeholder="Email Address *"
-                  className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors"
+                  className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-blue-500/40 transition-colors"
                 />
               </div>
               <input
                 type="text"
                 placeholder="Company Name"
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors"
+                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-blue-500/40 transition-colors"
               />
               <select
                 className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-slate-400 text-sm focus:outline-none focus:border-blue-500/40 transition-colors"
@@ -84,7 +84,7 @@ export default function ContactSection() {
               <textarea
                 rows={4}
                 placeholder="Describe your project or requirements..."
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors resize-none"
+                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/[0.06] text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-blue-500/40 transition-colors resize-none"
               />
               <button
                 type="submit"
