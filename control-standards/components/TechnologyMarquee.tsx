@@ -40,6 +40,12 @@ export default function TechnologyMarquee() {
   return (
     <section id="technologies" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 aurora-subtle pointer-events-none" />
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none"
+        style={{ backgroundImage: "url('/HealthDashboard.png')" }}
+        animate={{ scale: [1, 1.04, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

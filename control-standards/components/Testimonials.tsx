@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Quote, Star } from 'lucide-react';
+import { Quote, Star, Sparkles } from 'lucide-react';
 
 const testimonials = [
   {
@@ -10,6 +10,7 @@ const testimonials = [
     role: 'CTO',
     company: 'Leading Financial Institution',
     tags: ['Technology'],
+    avatar: '/03-profile-inline-b46ff584.png',
   },
   {
     quote: 'Their security architecture with Cloudflare WAF, DDoS protection, and end-to-end encryption gave us complete confidence. The audit trails and data isolation meet our strictest compliance requirements.',
@@ -17,6 +18,7 @@ const testimonials = [
     role: 'Head of Information Security',
     company: 'Fortune 500 Manufacturing',
     tags: ['Security'],
+    avatar: '/04-profile-inline-d184a26a.png',
   },
   {
     quote: 'The platform performs flawlessly even in low bandwidth environments. PostgreSQL + Redis combination with intelligent caching delivers sub-second response times. Real-time dashboards are incredibly fast.',
@@ -24,6 +26,7 @@ const testimonials = [
     role: 'VP of Operations',
     company: 'Multi-National Corporation',
     tags: ['Performance'],
+    avatar: '/05-profile-inline-aec59b68.png',
   },
   {
     quote: 'Complete data sovereignty with tenant isolation and encryption at rest. The Prisma ORM ensures type-safe database operations. Their analytics infrastructure provides actionable insights without compromising security.',
@@ -31,6 +34,7 @@ const testimonials = [
     role: 'Chief Data Officer',
     company: 'Enterprise Organization',
     tags: ['Data Infrastructure'],
+    avatar: '/06-profile-inline-1e311136.png',
   },
   {
     quote: 'Container-based deployment on Kubernetes with CI/CD pipeline enables zero-downtime updates. Their modular architecture allows us to scale specific services independently. Object storage integration is seamless.',
@@ -38,6 +42,7 @@ const testimonials = [
     role: 'Director of Engineering',
     company: 'Technology Company',
     tags: ['DevOps'],
+    avatar: '/07-profile-inline-f54f05c1.png',
   },
   {
     quote: 'The tech stack is impressive — modern, proven technologies combined intelligently. CDN integration ensures fast global delivery. Their monitoring and alerting gives us complete operational visibility.',
@@ -45,6 +50,7 @@ const testimonials = [
     role: 'IT Director',
     company: 'Global Enterprise',
     tags: ['Infrastructure'],
+    avatar: '/08-profile-inline-3b46d198.png',
   },
 ];
 
@@ -107,11 +113,29 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-sm text-slate-300 leading-relaxed mb-6 line-clamp-5">
+              <div className="flex items-center gap-3 mb-3">
+                <motion.div
+                  className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 border border-cyan-400/20"
+                  whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={t.avatar}
+                    alt={t.author}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+                <div>
+                  <div className="text-sm font-semibold text-white">{t.author}</div>
+                  <div className="text-xs text-slate-500">{t.role}, {t.company}</div>
+                </div>
+              </div>
+
+              <p className="text-sm text-slate-300 leading-relaxed mb-4 line-clamp-5">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2">
                 {t.tags.map((tag) => (
                   <span
                     key={tag}
@@ -120,13 +144,6 @@ export default function Testimonials() {
                     {tag}
                   </span>
                 ))}
-              </div>
-
-              <div className="border-t border-white/[0.04] pt-4 mt-auto">
-                <div className="text-sm font-semibold text-white">{t.author}</div>
-                <div className="text-xs text-slate-500">
-                  {t.role}, {t.company}
-                </div>
               </div>
             </motion.div>
           ))}

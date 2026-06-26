@@ -139,9 +139,9 @@ export default function HeroSection() {
             <div className="relative w-full aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
               <HeroAnimation />
               <motion.div
-                className="absolute inset-0 bg-cover bg-center opacity-25"
+                className="absolute inset-0 bg-cover bg-center opacity-40"
                 style={{ backgroundImage: "url('/Slitting.png')" }}
-                animate={{ scale: [1, 1.08, 1] }}
+                animate={{ scale: [1, 1.06, 1] }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
@@ -199,9 +199,9 @@ export default function HeroSection() {
               </div>
 
               {/* HUD overlay */}
-              <div className="absolute top-3 left-3 pointer-events-none font-mono text-[10px] text-cyan-400/40 bg-slate-950/60 backdrop-blur-xl px-2 py-1 rounded-lg border border-white/[0.04]">
-                <span className="flex items-center gap-1.5">
-                  <Activity className="w-3 h-3" /> SYSTEM: ACTIVE
+              <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[8px] text-cyan-400/30 bg-slate-950/40 backdrop-blur-sm px-1.5 py-0.5 rounded-md border border-white/[0.03]">
+                <span className="flex items-center gap-1">
+                  <Activity className="w-2 h-2" /> SYSTEM:ACTIVE
                 </span>
               </div>
             </div>

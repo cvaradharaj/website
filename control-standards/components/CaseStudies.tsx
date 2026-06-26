@@ -77,6 +77,12 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+        style={{ backgroundImage: "url('/Slitting.png')" }}
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

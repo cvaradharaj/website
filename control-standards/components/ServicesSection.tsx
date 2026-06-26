@@ -107,6 +107,13 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
 export default function ServicesSection() {
   return (
     <section id="services" className="relative py-24 lg:py-32 overflow-hidden">
+      {/* Ambient background */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+        style={{ backgroundImage: "url('/Slitting.png')" }}
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+      />
       {/* Ambient background orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div

@@ -8,6 +8,29 @@ export default function ContactSection() {
     <section id="contact" className="relative py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 aurora pointer-events-none" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+        style={{ backgroundImage: "url('/HealthDashboard.png')" }}
+        animate={{ scale: [1, 1.04, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      {/* Floating profile images */}
+      <motion.img
+        src="/09-profile-inline-eed7188d.png"
+        alt=""
+        className="absolute w-12 h-12 rounded-xl opacity-20 pointer-events-none"
+        style={{ left: '8%', top: '15%' }}
+        animate={{ y: [0, -20, 0], opacity: [0.15, 0.25, 0.15] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.img
+        src="/12-profile-inline-71f9f5b7.png"
+        alt=""
+        className="absolute w-16 h-16 rounded-xl opacity-15 pointer-events-none"
+        style={{ right: '10%', bottom: '20%' }}
+        animate={{ y: [0, -15, 0], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
