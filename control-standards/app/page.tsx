@@ -16,6 +16,7 @@ import SalesResourceCenter from '@/components/SalesResourceCenter';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
+import WhatWhySection from '@/components/WhatWhySection';
 
 export default function Home() {
   useLenis();
@@ -24,6 +25,7 @@ export default function Home() {
     <main className="min-h-screen bg-slate-950">
       <Navbar />
       <HeroSection />
+      <WhatWhySection />
       <TechnologyMarquee />
       <ServicesSection />
       <Statistics />

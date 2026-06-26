@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Cpu, CircuitBoard, Gauge, Wifi, Activity } from 'lucide-react';
+import HeroAnimation from './HeroAnimation';
 
 const particles = Array.from({ length: 20 }).map(() => ({
   x: Math.random() * 100,
@@ -130,13 +131,7 @@ export default function HeroSection() {
             className="lg:col-span-6 relative"
           >
             <div className="relative w-full aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
-              {/* Background image */}
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-40"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80')`,
-                }}
-              />
+              <HeroAnimation />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
               <div className="absolute inset-0 aurora-subtle" />
 
