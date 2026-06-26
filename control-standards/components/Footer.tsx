@@ -19,7 +19,7 @@ export default function Footer() {
               <img
                 src="/logo-sm.png"
                 alt="Control Standards"
-                className="h-8 w-auto opacity-80"
+                className="h-10 w-auto opacity-90"
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-xs">

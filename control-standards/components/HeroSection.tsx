@@ -21,6 +21,12 @@ export default function HeroSection() {
       {/* Aurora background */}
       <div className="absolute inset-0 aurora pointer-events-none" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none"
+        style={{ backgroundImage: "url('/Slitting.png')" }}
+        animate={{ scale: [1, 1.06, 1] }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
       {/* Animated glow blobs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse pointer-events-none" style={{ animationDuration: '8s' }} />
@@ -132,6 +138,12 @@ export default function HeroSection() {
           >
             <div className="relative w-full aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
               <HeroAnimation />
+              <motion.div
+                className="absolute inset-0 bg-cover bg-center opacity-25"
+                style={{ backgroundImage: "url('/Slitting.png')" }}
+                animate={{ scale: [1, 1.08, 1] }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
               <div className="absolute inset-0 aurora-subtle" />
 

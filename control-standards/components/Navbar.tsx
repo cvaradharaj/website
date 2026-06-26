@@ -24,7 +24,7 @@ export default function Navbar() {
           <img
             src="/logo-sm.png"
             alt="Control Standards"
-            className="h-7 sm:h-8 w-auto transition-opacity"
+            className="h-9 sm:h-11 w-auto transition-opacity"
           />
         </a>
 
