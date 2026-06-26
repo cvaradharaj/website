@@ -1,188 +1,153 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-const serviceLocations = [
-  { name: 'India', nameSub: 'Bengaluru HQ', mx: 57, my: 26.5, labelX: 1.5, labelY: 0.3, color: '#00ddff' },
-  { name: 'Indonesia', nameSub: 'Jakarta', mx: 67.5, my: 37, labelX: 1.5, labelY: 0.3, color: '#4488ff' },
-  { name: 'Turkey', nameSub: 'Istanbul', mx: 43, my: 18.5, labelX: -4, labelY: 0.3, color: '#818cf8' },
-  { name: 'China', nameSub: 'Shanghai', mx: 60.5, my: 20, labelX: 1.5, labelY: 0.3, color: '#4488ff' },
-  { name: 'South America', nameSub: 'Sao Paulo', mx: 26, my: 37, labelX: 1.5, labelY: 0.3, color: '#00ddff' },
+const locations = [
+  { name: 'India', mx: 0.55, my: 0.54 },
+  { name: 'Indonesia', mx: 0.66, my: 0.74 },
+  { name: 'China', mx: 0.62, my: 0.36 },
+  { name: 'Turkey', mx: 0.44, my: 0.34 },
+  { name: 'South America', mx: 0.28, my: 0.70 },
 ];
 
-const landPaths = [
-  { d: 'M14,5 Q18,3 24,4 Q28,6 30,10 Q31,15 29,18 Q27,20 22,21 Q18,20 16,18 Q14,15 12,10 Q12,7 14,5Z', color: '#4488ff' }, // NA
-  { d: 'M22,23 Q25,22 28,23 Q30,25 31,29 Q30,36 29,42 Q27,46 25,47 Q22,46 21,42 Q19,36 20,30 Q21,26 22,23Z', color: '#00ddff' }, // SA
-  { d: 'M39,6 Q42,4 47,5 Q50,7 51,10 Q51,14 49,16 Q46,18 42,17 Q39,15 37,12 Q37,8 39,6Z', color: '#818cf8' }, // Europe
-  { d: 'M37,17 Q41,16 45,17 Q48,18 50,21 Q51,25 50,30 Q48,35 45,38 Q42,39 39,37 Q37,33 36,28 Q35,22 37,17Z', color: '#00ddff' }, // Africa
-  { d: 'M50,6 Q55,4 62,5 Q67,7 70,10 Q72,14 72,18 Q70,22 67,24 Q62,26 57,25 Q53,23 50,20 Q47,16 48,10 Q48,7 50,6Z', color: '#4488ff' }, // Asia
-  { d: 'M45,20 Q48,20 50,22 Q52,25 51,28 Q50,30 48,30 Q46,29 45,27 Q44,24 45,20Z', color: '#818cf8' }, // Middle East
-  { d: 'M56,28 Q58,27 62,28 Q65,30 66,33 Q65,36 64,38 Q61,39 58,38 Q56,36 55,32 Q55,29 56,28Z', color: '#00ddff' }, // SE Asia
-  { d: 'M71,35 Q74,34 77,36 Q78,39 77,42 Q75,44 72,43 Q70,41 69,38 Q70,36 71,35Z', color: '#4488ff' }, // Australia
-  { d: 'M30,2 Q33,1 35,3 Q36,5 34,7 Q32,8 30,6 Q29,4 30,2Z', color: '#818cf8' }, // Greenland
+// Simplified continent outlines as normalized polygons (x: 0-1, y: 0-1)
+const continents = [
+  // North America
+  { points: [[0.10,0.06],[0.14,0.04],[0.18,0.04],[0.22,0.05],[0.26,0.07],[0.28,0.10],[0.30,0.14],[0.30,0.18],[0.28,0.22],[0.26,0.26],[0.24,0.28],[0.22,0.30],[0.20,0.32],[0.18,0.30],[0.16,0.28],[0.14,0.26],[0.12,0.24],[0.10,0.20],[0.08,0.16],[0.08,0.12],[0.08,0.08]], color: '#4488ff' },
+  // South America
+  { points: [[0.24,0.48],[0.28,0.48],[0.30,0.52],[0.32,0.56],[0.32,0.64],[0.30,0.72],[0.28,0.80],[0.26,0.86],[0.24,0.88],[0.22,0.86],[0.20,0.80],[0.18,0.72],[0.18,0.64],[0.20,0.56],[0.22,0.50]], color: '#00ddff' },
+  // Europe
+  { points: [[0.40,0.08],[0.44,0.06],[0.48,0.08],[0.50,0.12],[0.50,0.16],[0.48,0.20],[0.46,0.24],[0.44,0.26],[0.42,0.26],[0.40,0.24],[0.38,0.20],[0.38,0.16],[0.38,0.12]], color: '#818cf8' },
+  // Africa
+  { points: [[0.38,0.34],[0.42,0.34],[0.46,0.36],[0.48,0.40],[0.50,0.46],[0.50,0.52],[0.48,0.58],[0.46,0.64],[0.44,0.68],[0.42,0.70],[0.40,0.68],[0.38,0.64],[0.36,0.58],[0.34,0.50],[0.34,0.44],[0.36,0.38]], color: '#00ddff' },
+  // Asia
+  { points: [[0.48,0.06],[0.54,0.04],[0.60,0.04],[0.66,0.06],[0.70,0.10],[0.72,0.16],[0.72,0.22],[0.70,0.28],[0.66,0.34],[0.62,0.38],[0.58,0.40],[0.54,0.40],[0.50,0.38],[0.46,0.34],[0.44,0.28],[0.44,0.20],[0.44,0.14],[0.46,0.10]], color: '#4488ff' },
+  // Middle East
+  { points: [[0.46,0.36],[0.50,0.36],[0.52,0.38],[0.54,0.42],[0.54,0.46],[0.52,0.50],[0.50,0.52],[0.48,0.52],[0.46,0.50],[0.44,0.46],[0.44,0.42]], color: '#818cf8' },
+  // Australia
+  { points: [[0.73,0.62],[0.77,0.62],[0.80,0.66],[0.80,0.72],[0.78,0.78],[0.74,0.80],[0.70,0.78],[0.68,0.74],[0.68,0.68],[0.70,0.64]], color: '#4488ff' },
 ];
 
 export default function WorldMap() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [dims, setDims] = useState({ w: 800, h: 400 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    function update() {
-      if (!containerRef.current) return;
-      const r = containerRef.current.getBoundingClientRect();
-      setDims({ w: r.width, h: r.height });
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const cvs = canvas;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let animId: number;
+
+    function draw() {
+      if (!ctx) return;
+      const rect = cvs.parentElement!.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = rect.width;
+      const h = rect.height;
+      cvs.width = w * dpr;
+      cvs.height = h * dpr;
+      cvs.style.width = `${w}px`;
+      cvs.style.height = `${h}px`;
+      ctx.scale(dpr, dpr);
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Draw grid
+      ctx.strokeStyle = 'rgba(255,255,255,0.015)';
+      ctx.lineWidth = 0.5;
+      for (let x = 0; x <= w; x += w * 0.1) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y <= h; y += h * 0.1) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // Draw continents
+      continents.forEach((c) => {
+        ctx.beginPath();
+        const first = c.points[0];
+        ctx.moveTo(first[0] * w, first[1] * h);
+        for (let i = 1; i < c.points.length; i++) {
+          const p = c.points[i];
+          const prev = c.points[i - 1];
+          const cpx = (prev[0] + p[0]) / 2 * w;
+          const cpy = (prev[1] + p[1]) / 2 * h;
+          ctx.quadraticCurveTo(prev[0] * w, prev[1] * h, cpx, cpy);
+        }
+        ctx.closePath();
+        ctx.fillStyle = c.color + '15';
+        ctx.fill();
+        ctx.strokeStyle = c.color + '30';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      });
+
+      // Connection lines
+      locations.slice(1).forEach((loc) => {
+        ctx.beginPath();
+        ctx.moveTo(locations[0].mx * w, locations[0].my * h);
+        ctx.lineTo(loc.mx * w, loc.my * h);
+        ctx.strokeStyle = 'rgba(0,221,255,0.1)';
+        ctx.lineWidth = 0.5;
+        ctx.setLineDash([3, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      });
+
+      // Location markers
+      locations.forEach((loc) => {
+        const x = loc.mx * w;
+        const y = loc.my * h;
+        const t = Date.now() / 1000;
+
+        // Glow
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, 20);
+        grad.addColorStop(0, 'rgba(0,221,255,0.1)');
+        grad.addColorStop(1, 'rgba(0,221,255,0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(x, y, 20, 0, Math.PI * 2); ctx.fill();
+
+        // Pulse ring
+        const pulse = 8 + Math.sin(t * 2) * 4;
+        ctx.strokeStyle = 'rgba(0,221,255,0.2)';
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(x, y, pulse, 0, Math.PI * 2); ctx.stroke();
+
+        // Dot
+        ctx.fillStyle = '#00ddff';
+        ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+
+        // Label
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.font = '10px monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText(loc.name, x + 8, y + 4);
+      });
+
+      animId = requestAnimationFrame(draw);
     }
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
+
+    draw();
+    const handleResize = () => {};
+    window.addEventListener('resize', handleResize);
+    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', handleResize); };
   }, []);
 
-  const vw = dims.w;
-  const vh = dims.h;
-
   return (
-    <div ref={containerRef} className="relative w-full aspect-[2/1] rounded-2xl glass border-white/[0.03] overflow-hidden">
+    <div className="relative w-full aspect-[2/1] rounded-2xl glass border-white/[0.03] overflow-hidden">
       <div className="absolute inset-0 aurora-subtle pointer-events-none" />
-
-      <motion.div
-        className="absolute w-48 h-48 rounded-full bg-cyan-400/5 blur-[80px] pointer-events-none"
-        animate={{ x: [0, vw * 0.25, 0], y: [0, vh * 0.15, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ left: vw * 0.2, top: vh * 0.15 }}
-      />
-      <motion.div
-        className="absolute w-40 h-40 rounded-full bg-blue-500/5 blur-[60px] pointer-events-none"
-        animate={{ x: [0, -vw * 0.2, 0], y: [0, vh * 0.2, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ left: vw * 0.65, top: vh * 0.3 }}
-      />
-
-      <svg viewBox="0 0 100 60" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-        {/* Latitude/Longitude grid */}
-        {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((x) => (
-          <line key={`gx-${x}`} x1={x} y1={0} x2={x} y2={60} stroke="rgba(255,255,255,0.015)" strokeWidth="0.08" />
-        ))}
-        {[0, 10, 20, 30, 40, 50, 60].map((y) => (
-          <line key={`gy-${y}`} x1={0} y1={y} x2={100} y2={y} stroke="rgba(255,255,255,0.015)" strokeWidth="0.08" />
-        ))}
-
-        {/* Land masses */}
-        {landPaths.map((land, i) => (
-          <motion.path
-            key={i}
-            d={land.d}
-            fill={`${land.color}08`}
-            stroke={`${land.color}15`}
-            strokeWidth="0.15"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: i * 0.05 }}
-          />
-        ))}
-
-        {/* Connection lines from India to all locations */}
-        {serviceLocations.slice(1).map((loc) => (
-          <motion.line
-            key={`conn-${loc.name}`}
-            x1={serviceLocations[0].mx}
-            y1={serviceLocations[0].my}
-            x2={loc.mx}
-            y2={loc.my}
-            stroke={`${loc.color}20`}
-            strokeWidth="0.1"
-            strokeDasharray="0.4 0.8"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
-        ))}
-
-        {/* Service location markers */}
-        {serviceLocations.map((loc) => (
-          <g key={`marker-${loc.name}`}>
-            {/* Glow */}
-            <motion.circle
-              cx={loc.mx}
-              cy={loc.my}
-              r={3.5}
-              fill={`${loc.color}08`}
-              animate={{ r: [3.5, 5, 3.5], opacity: [0.08, 0.03, 0.08] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            {/* Outer ring */}
-            <motion.circle
-              cx={loc.mx}
-              cy={loc.my}
-              r={1.2}
-              fill="none"
-              stroke={`${loc.color}40`}
-              strokeWidth="0.12"
-              animate={{ r: [1.2, 1.8, 1.2], opacity: [0.4, 0.1, 0.4] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-            />
-            {/* Dot */}
-            <motion.circle
-              cx={loc.mx}
-              cy={loc.my}
-              r={0.4}
-              fill={loc.color}
-              initial={{ r: 0 }}
-              whileInView={{ r: 0.4 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            />
-            {/* Label */}
-            <motion.g
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <text
-                x={loc.mx + loc.labelX}
-                y={loc.my + loc.labelY}
-                fill="rgba(255,255,255,0.6)"
-                fontSize="1.1"
-                fontFamily="monospace"
-                fontWeight="600"
-              >
-                {loc.name}
-              </text>
-              <text
-                x={loc.mx + loc.labelX}
-                y={loc.my + loc.labelY + 1.4}
-                fill={`${loc.color}50`}
-                fontSize="0.7"
-                fontFamily="monospace"
-              >
-                {loc.nameSub}
-              </text>
-            </motion.g>
-          </g>
-        ))}
-
-        {/* India HQ highlight */}
-        <motion.circle
-          cx={serviceLocations[0].mx}
-          cy={serviceLocations[0].my}
-          r={6}
-          fill="rgba(0,221,255,0.03)"
-          animate={{ r: [6, 8, 6], opacity: [0.03, 0.01, 0.03] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      </svg>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
       <motion.div
         className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[8px] font-mono text-slate-500 bg-slate-950/60 px-3 py-1 rounded-full whitespace-nowrap"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.8 }}
+        transition={{ duration: 0.6 }}
       >
-        <span className="text-cyan-400/60">●</span> Global Service Locations — 18 Countries Across Asia, Europe &amp; South America
+        <span className="text-cyan-400/60">●</span> Global Service Locations — 18 Countries
       </motion.div>
     </div>
   );
