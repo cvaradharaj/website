@@ -3,55 +3,59 @@
 import { motion } from 'framer-motion';
 
 const locations = [
-  { name: 'India (HQ)', mx: 0.55, my: 0.54 },
-  { name: 'Indonesia', mx: 0.66, my: 0.74 },
-  { name: 'China', mx: 0.62, my: 0.36 },
-  { name: 'Turkey', mx: 0.44, my: 0.34 },
-  { name: 'South America', mx: 0.28, my: 0.70 },
+  { name: 'India (HQ)', x: 685, y: 280 },
+  { name: 'Indonesia', x: 735, y: 340 },
+  { name: 'China', x: 700, y: 200 },
+  { name: 'Turkey', x: 550, y: 215 },
+  { name: 'South America', x: 310, y: 420 },
 ];
 
 export default function WorldMap() {
   return (
-    <div className="relative w-full aspect-[2/1] rounded-2xl glass border-white/[0.03] overflow-hidden">
+    <div className="relative w-full aspect-[950/620] rounded-2xl glass border-white/[0.03] overflow-hidden">
       <div className="absolute inset-0 aurora-subtle pointer-events-none" />
 
       <img
         src="/world-map.svg"
         alt="World map"
-        className="absolute inset-0 w-full h-full object-contain p-1"
+        className="absolute inset-0 w-full h-full"
       />
 
-      {/* Connection lines from India */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 50" preserveAspectRatio="xMidYMid meet">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 950 620" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="g" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#00ddff" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#00ddff" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
         {locations.slice(1).map((loc, i) => (
           <line key={i}
-            x1={locations[0].mx * 100} y1={locations[0].my * 50}
-            x2={loc.mx * 100} y2={loc.my * 50}
-            stroke="rgba(0,221,255,0.15)" strokeWidth="0.3" strokeDasharray="2,3"
+            x1={locations[0].x} y1={locations[0].y}
+            x2={loc.x} y2={loc.y}
+            stroke="rgba(0,221,255,0.12)" strokeWidth="1" strokeDasharray="4,5"
           />
         ))}
-      </svg>
 
-      {/* Location markers */}
-      {locations.map((loc, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{ left: `${loc.mx * 100}%`, top: `${loc.my * 100}%`, transform: 'translate(-50%, -50%)' }}
-        >
-          <div className="relative">
-            <motion.div
-              className="absolute -inset-4 rounded-full border border-cyan-400/30"
-              animate={{ scale: [1, 2.5, 1], opacity: [0.3, 0, 0.3] }}
+        {locations.map((loc, i) => (
+          <g key={i}>
+            <motion.circle
+              cx={loc.x} cy={loc.y} r={6}
+              fill="none" stroke="rgba(0,221,255,0.25)" strokeWidth="1"
+              animate={{ r: [6, 18, 6], opacity: [0.25, 0, 0.25] }}
               transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
             />
-            <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,221,255,0.5)]" />
-          </div>
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[9px] font-mono text-cyan-400/60 whitespace-nowrap">
-            {loc.name}
-          </span>
-        </div>
-      ))}
+            <circle cx={loc.x} cy={loc.y} r={16} fill="url(#g)" />
+            <circle cx={loc.x} cy={loc.y} r={3} fill="#00ddff" />
+            <text x={loc.x + 8} y={loc.y + 1}
+              fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="monospace"
+              dominantBaseline="middle"
+            >
+              {loc.name}
+            </text>
+          </g>
+        ))}
+      </svg>
 
       <motion.div
         className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[8px] font-mono text-slate-500 bg-slate-950/60 px-3 py-1 rounded-full whitespace-nowrap"
