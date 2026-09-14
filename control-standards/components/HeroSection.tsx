@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Cpu, CircuitBoard, Gauge, Wifi, Activity } from 'lucide-react';
+import { ArrowRight, Download, Cpu, CircuitBoard, Gauge, Wifi, Activity } from 'lucide-react';
 import HeroAnimation from './HeroAnimation';
 
 const particles = Array.from({ length: 20 }).map(() => ({
@@ -94,7 +94,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-4"
             >
               <a
                 href="#case-studies"
@@ -108,6 +108,14 @@ export default function HeroSection() {
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl glass glass-hover text-slate-200 hover:text-white font-medium text-sm transition-all duration-300"
               >
                 Request Technical Consultation
+              </a>
+              <a
+                href="/Control-Standards-Brochure.pdf"
+                download
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl glass glass-hover text-slate-200 hover:text-white font-medium text-sm transition-all duration-300"
+              >
+                <Download className="w-4 h-4" />
+                Download Brochure
               </a>
             </motion.div>
 

@@ -37,6 +37,8 @@ const openRoles = [
       'Prepare service reports and maintain technical documentation.',
       'Coordinate with electrical and software teams during project execution.',
       'Ensure adherence to safety and quality standards while working at customer sites.',
+      'Primarily based as a Resident Engineer at a customer site, with travel to other locations as project needs arise.',
+      'While resident, contribute to in-house development activities such as mechanical design, documentation, and process improvement between site assignments.',
     ],
   },
   {
@@ -54,6 +56,8 @@ const openRoles = [
       'Prepare technical reports and service documentation.',
       'Work closely with mechanical and software teams during project execution.',
       'Follow safety procedures and industry best practices at customer locations.',
+      'Primarily based as a Resident Engineer at a customer site, with travel to other locations as project needs arise.',
+      'While resident, provide remote support and contribute to in-house development activities such as HMI/SCADA programming and system design between site assignments.',
     ],
   },
 ];
@@ -61,7 +65,7 @@ const openRoles = [
 const preferredQualities = [
   'Freshers are encouraged to apply.',
   'Strong willingness to learn and work hands-on with equipment.',
-  'Ready to travel extensively and work at customer sites.',
+  'Ready to be based as a Resident Engineer at customer sites, with willingness to travel as needed.',
   'Positive attitude with a strong desire to build a successful career.',
   'Good communication and interpersonal skills.',
   'Well-mannered, disciplined, and professional in conduct.',
@@ -115,8 +119,9 @@ export default function CareersClient() {
             We are a fast-growing engineering startup delivering advanced automation solutions and
             on-site technical support. We are hiring energetic fresh graduates for{' '}
             <strong className="text-slate-200">Field Service Engineer</strong> roles — hands-on
-            training on real industrial equipment from day one, with extensive travel across India
-            and beyond.
+            training on real industrial equipment from day one. Roles are primarily{' '}
+            <strong className="text-slate-200">Resident Engineer</strong> positions based at a
+            customer site, with travel to other locations as project needs arise.
           </motion.p>
         </div>
       </section>
@@ -219,14 +224,12 @@ export default function CareersClient() {
                   <div className="text-xs font-mono text-slate-500 uppercase">Training Period</div>
                   <div className="text-sm text-slate-300">3 months, structured hands-on training</div>
                 </div>
-                <div className="text-lg font-bold text-cyan-400 font-mono whitespace-nowrap">₹20,000/mo</div>
               </div>
               <div className="flex items-center justify-between p-3 rounded-xl bg-white/[0.03]">
                 <div>
                   <div className="text-xs font-mono text-slate-500 uppercase">Post Training</div>
-                  <div className="text-sm text-slate-300">Plus performance-based annual bonus</div>
+                  <div className="text-sm text-slate-300">Full-time role with performance-based annual bonus</div>
                 </div>
-                <div className="text-lg font-bold text-cyan-400 font-mono whitespace-nowrap">₹25,000/mo</div>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed pt-1">
                 Continuous technical and skill development, with fast-track growth into technical
@@ -239,10 +242,11 @@ export default function CareersClient() {
             <div className="liquid-glass-icon w-11 h-11 rounded-xl mb-4">
               <Plane className="w-5 h-5 icon-inner text-blue-400" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-4">Travel &amp; Benefits</h3>
+            <h3 className="text-lg font-bold text-white mb-4">Work Model, Travel &amp; Benefits</h3>
             <ul className="space-y-2.5">
               {[
-                'Extensive travel opportunities across India and internationally.',
+                'Primarily based as a Resident Engineer at a customer site, with travel to other locations across India and internationally as project needs arise.',
+                'While resident, also provide remote support and take on in-house development activities — HMI/SCADA programming, system design, and documentation — between site assignments.',
                 'All official travel, accommodation, and work-related expenses covered by the company.',
                 'Hands-on exposure to advanced engineering systems and technologies.',
                 'Opportunity to grow alongside a dynamic startup and contribute directly to its success.',
