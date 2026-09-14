@@ -213,3 +213,76 @@
   .preserve-3d { transform-style: preserve-3d; }
   .backface-hidden { backface-visibility: hidden; }
 }
+
+/* Leaflet global customer engagement map — dark theme overrides */
+.leaflet-container {
+  background: #0b1220;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Standard OpenStreetMap tiles are bright by default and need no API key;
+   invert + tint them so the map matches the site's dark glass aesthetic. */
+.cs-dark-tiles .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.92) saturate(0.7);
+}
+
+.leaflet-tooltip.cs-map-label {
+  background: rgba(4, 12, 24, 0.82);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  color: #a5f3fc;
+  font-size: 9px;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 1px 5px;
+  border-radius: 4px;
+  box-shadow: none;
+  white-space: nowrap;
+}
+.leaflet-tooltip.cs-map-label::before {
+  display: none;
+}
+.leaflet-tooltip.cs-map-hub-label {
+  color: #bfdbfe;
+  border-color: rgba(59, 130, 246, 0.4);
+  font-weight: 600;
+  font-size: 10px;
+}
+
+/* Connector routes: a soft base line draws/fades in on load, then a brighter
+   pulse flows continuously from Bengaluru out to each country. */
+.route-line {
+  opacity: 0;
+  animation: cs-route-in 1s ease-out forwards;
+}
+@keyframes cs-route-in {
+  from { opacity: 0; }
+  to { opacity: 0.45; }
+}
+
+.route-pulse {
+  stroke-dasharray: 3 11;
+  opacity: 0;
+  animation:
+    cs-route-in-pulse 0.6s ease-out forwards,
+    cs-route-flow 3.2s linear infinite;
+  animation-delay: inherit;
+}
+@keyframes cs-route-in-pulse {
+  from { opacity: 0; }
+  to { opacity: 0.85; }
+}
+@keyframes cs-route-flow {
+  to {
+    stroke-dashoffset: -140;
+  }
+}
+
+.route-delay-0 { animation-delay: 0s, 1s; }
+.route-delay-1 { animation-delay: 0.08s, 1.08s; }
+.route-delay-2 { animation-delay: 0.16s, 1.16s; }
+.route-delay-3 { animation-delay: 0.24s, 1.24s; }
+.route-delay-4 { animation-delay: 0.32s, 1.32s; }
+.route-delay-5 { animation-delay: 0.4s, 1.4s; }
+.route-delay-6 { animation-delay: 0.48s, 1.48s; }
+.route-delay-7 { animation-delay: 0.56s, 1.56s; }
+.route-delay-8 { animation-delay: 0.64s, 1.64s; }
+.route-delay-9 { animation-delay: 0.72s, 1.72s; }

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Control Standards — Technical Capability Brochure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #060b16;
+    --navy-2: #0b1526;
+    --navy-3: #101d33;
+    --cyan: #22d3ee;
+    --blue: #3b82f6;
+    --ink: #e7edf5;
+    --ink-dim: #9db0c9;
+    --ink-faint: #6b7d97;
+    --line: rgba(255,255,255,0.09);
+    --good: #34d399;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Ubuntu', 'Segoe UI', Arial, sans-serif;
+    color: var(--ink);
+    background: #444;
+  }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  @page { size: A4; margin: 0; }
+  .page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* decorative grid + glow */
+  .bg-grid {
+    position: absolute; inset: 0; opacity: 0.35; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .glow-a { position:absolute; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(34,211,238,0.22), transparent 70%); top:-120px; right:-120px; pointer-events:none; }
+  .glow-b { position:absolute; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle, rgba(59,130,246,0.16), transparent 70%); bottom:-140px; left:-140px; pointer-events:none; }
+
+  /* header */
+  .brand-header {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9mm 12mm 6mm 12mm;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-header img { height: 30px; width: auto; display: block; }
+  .brand-header .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.25);
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 2;
+    margin: 7mm 12mm 0 12mm;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 88mm;
+    border: 1px solid var(--line);
+  }
+  .hero img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05) brightness(0.85); }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(6,11,22,0.25) 0%, rgba(6,11,22,0.55) 55%, rgba(6,11,22,0.96) 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8mm 9mm;
+  }
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 6px;
+  }
+  .hero h1 {
+    font-size: 25px; line-height: 1.15; font-weight: 800; margin: 0 0 6px 0; max-width: 150mm;
+  }
+  .hero h1 span { color: var(--cyan); }
+  .hero p { margin: 0; font-size: 11px; color: var(--ink-dim); max-width: 145mm; line-height: 1.5; }
+
+  /* stat strip */
+  .stats {
+    position: relative; z-index: 2;
+    margin: 6mm 12mm 0 12mm;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm;
+  }
+  .stat { text-align: center; border: 1px solid var(--line); border-radius: 8px; padding: 5mm 2mm; background: rgba(255,255,255,0.02); }
+  .stat .v { font-size: 20px; font-weight: 800; color: var(--cyan); font-family: 'IBM Plex Mono', monospace; }
+  .stat .l { font-size: 7.5px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+  /* section title */
+  .section { position: relative; z-index: 2; padding: 7mm 12mm 0 12mm; }
+  .section-title { display:flex; align-items:baseline; gap:8px; margin-bottom: 4mm; }
+  .section-title .num { font-family:'IBM Plex Mono',monospace; font-size:10px; color: var(--cyan); border:1px solid rgba(34,211,238,.3); border-radius:5px; padding:2px 6px; }
+  .section-title h2 { font-size: 15px; margin: 0; font-weight: 700; letter-spacing: 0.01em; }
+  .section-sub { font-size: 9.5px; color: var(--ink-dim); margin: -2mm 0 4mm 0; line-height:1.5; max-width: 165mm; }
+
+  /* why-choose cards */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
+  .why-card { border: 1px solid var(--line); border-radius: 9px; padding: 5mm 4mm; background: rgba(255,255,255,0.025); }
+  .why-card .ico { width: 24px; height: 24px; border-radius: 7px; background: linear-gradient(135deg, var(--cyan), var(--blue)); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#04141c; margin-bottom: 4px; }
+  .why-card h3 { font-size: 10.5px; margin: 0 0 3px 0; font-weight: 700; }
+  .why-card p { font-size: 8.3px; color: var(--ink-dim); line-height: 1.45; margin: 0; }
+
+  /* services grid */
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5mm; }
+  .svc-card { border: 1px solid var(--line); border-radius: 9px; padding: 4.5mm; background: rgba(255,255,255,0.02); }
+  .svc-card h3 { font-size: 10px; margin: 0 0 3px 0; color: var(--cyan); font-weight: 700; }
+  .svc-card p { font-size: 8.2px; color: var(--ink-dim); line-height: 1.4; margin: 0; }
+
+  /* partner strip */
+  .partners {
+    position: relative; z-index: 2;
+    margin: auto 12mm 9mm 12mm;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--line); padding-top: 5mm;
+  }
+  .partners .label { font-family:'IBM Plex Mono',monospace; font-size: 7.5px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.14em; }
+  .partners .names { display:flex; gap: 8mm; font-weight: 700; font-size: 10.5px; letter-spacing: 0.03em; color: var(--ink); }
+  .partners .names span { opacity: 0.85; }
+
+  .page-footer {
+    position: relative; z-index: 2;
+    margin-top: auto;
+    display:flex; justify-content: space-between; align-items:center;
+    padding: 4mm 12mm 6mm 12mm;
+    font-family: 'IBM Plex Mono', monospace; font-size: 7.5px; color: var(--ink-faint);
+    border-top: 1px solid var(--line);
+  }
+
+  /* PAGE 2 specifics */
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 8.6px; }
+  .cmp-table th, .cmp-table td { padding: 3.2mm 3mm; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  .cmp-table th { font-family:'IBM Plex Mono',monospace; font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); font-weight: 600; }
+  .cmp-table td.cap { color: var(--ink); font-weight: 700; width: 26%; }
+  .cmp-table td.typ { color: var(--ink-faint); width: 34%; }
+  .cmp-table td.cs { color: var(--ink); width: 40%; }
+  .cmp-table td.cs::before { content: "✓ "; color: var(--good); font-weight: 800; }
+  .cmp-table td.typ::before { content: "— "; color: #64748b; }
+
+  .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5mm; }
+  .case-card { border: 1px solid var(--line); border-radius: 9px; padding: 4.5mm; background: rgba(255,255,255,0.02); }
+  .case-card .tag { font-family:'IBM Plex Mono',monospace; font-size: 7px; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.08em; }
+  .case-card h3 { font-size: 9.6px; margin: 3px 0 4px 0; font-weight: 700; line-height: 1.3; }
+  .case-card .metrics { display:flex; gap: 5mm; margin-top: 4px; }
+  .case-card .metrics div { text-align:center; }
+  .case-card .metrics .mv { font-family:'IBM Plex Mono',monospace; font-size: 13px; font-weight: 800; color: var(--good); }
+  .case-card .metrics .ml { font-size: 6.6px; color: var(--ink-faint); text-transform: uppercase; }
+
+  .map-wrap { position: relative; border-radius: 9px; overflow: hidden; border: 1px solid var(--line); height: 56mm; }
+  .map-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
+  .map-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(0deg, rgba(6,11,22,0.92), transparent);
+    padding: 5mm 6mm 4mm 6mm; font-size: 8.6px; color: var(--ink-dim);
+  }
+  .map-caption b { color: var(--cyan); }
+
+  .cta-band {
+    position: relative; z-index: 2;
+    margin: 6mm 12mm 0 12mm;
+    border-radius: 10px;
+    border: 1px solid rgba(34,211,238,0.3);
+    background: linear-gradient(135deg, rgba(34,211,238,0.10), rgba(59,130,246,0.08));
+    padding: 6mm 7mm;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-band h3 { margin: 0 0 3px 0; font-size: 13.5px; font-weight: 800; }
+  .cta-band p { margin: 0; font-size: 8.6px; color: var(--ink-dim); }
+  .cta-contacts { text-align: right; font-size: 9px; line-height: 1.7; }
+  .cta-contacts .k { color: var(--cyan); font-family:'IBM Plex Mono',monospace; font-size: 7px; text-transform: uppercase; letter-spacing:0.1em; margin-right: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page">
+  <div class="bg-grid"></div>
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+
+  <header class="brand-header">
+    <img src="assets/logo.png" alt="Control Standards" />
+    <span class="tag">Technical Capability Brochure</span>
+  </header>
+
+  <div class="hero">
+    <img src="assets/Slitting.png" alt="Precision industrial slitting line engineered by Control Standards" />
+    <div class="hero-overlay">
+      <div class="hero-eyebrow">Industrial Automation Engineering · Est. 2020 · Bengaluru, India</div>
+      <h1>Precision Automation Engineering for <span>Manufacturers Worldwide</span></h1>
+      <p>We design, program, and commission control systems for printing, packaging, film, and converting machinery — from single control panels to full line modernizations — engineered by a certified team in Bengaluru and delivered to customers across 35+ countries.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v">2020</div><div class="l">Founded</div></div>
+    <div class="stat"><div class="v">500+</div><div class="l">Projects Delivered</div></div>
+    <div class="stat"><div class="v">35+</div><div class="l">Countries Served</div></div>
+    <div class="stat"><div class="v">99.8%</div><div class="l">System Uptime</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="num">01</span><h2>Why Global Manufacturers Choose Control Standards</h2></div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="ico">✓</div>
+        <h3>Certified Engineering Depth</h3>
+        <p>Siemens Solution Partner and Beckhoff Certified System Integrator — real controls engineering in TIA Portal, TwinCAT, SCADA and motion control, not generic scripting.</p>
+      </div>
+      <div class="why-card">
+        <div class="ico">⟲</div>
+        <h3>End-to-End Ownership</h3>
+        <p>Concept, panel design, programming, commissioning and lifecycle support under one accountable engineering team — never handed off between vendors.</p>
+      </div>
+      <div class="why-card">
+        <div class="ico">%</div>
+        <h3>Proven, Measurable ROI</h3>
+        <p>15–40% efficiency gains, documented project by project with before/after metrics — not marketing estimates.</p>
+      </div>
+      <div class="why-card">
+        <div class="ico">◈</div>
+        <h3>Industry 4.0-Ready</h3>
+        <p>IIoT, digital twins, predictive maintenance and OEE analytics built into every modernization, so your line is ready for what's next.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="num">02</span><h2>What We Deliver</h2></div>
+    <div class="svc-grid">
+      <div class="svc-card"><h3>PLC &amp; SCADA Programming</h3><p>Siemens S7-1200/1500, TIA Portal, Beckhoff TwinCAT, WinCC — architecture, logic and HMI built for your process, not templated.</p></div>
+      <div class="svc-card"><h3>Control Panel Design &amp; Fabrication</h3><p>Concept-to-certified-build panel manufacturing with full documentation and compliance.</p></div>
+      <div class="svc-card"><h3>Motion Control &amp; Drive Systems</h3><p>Servo motion, VFDs and multi-axis synchronization for tension control, registration and coordinated line control.</p></div>
+      <div class="svc-card"><h3>Machine Modernization &amp; Retrofits</h3><p>Legacy PLC replacement, drive upgrades and HMI overhauls that extend machine life without a capital rebuild.</p></div>
+      <div class="svc-card"><h3>Industry 4.0 &amp; Digital Solutions</h3><p>IIoT connectivity, digital twins, predictive maintenance, SCADA/MES/ERP integration and OEE dashboards.</p></div>
+      <div class="svc-card"><h3>Lifecycle Management &amp; Support</h3><p>Remote diagnostics, proactive spares planning and rapid on-site response for the life of the system.</p></div>
+    </div>
+  </div>
+
+  <div class="partners">
+    <span class="label">Certified &amp; Partnered With</span>
+    <div class="names"><span>SIEMENS</span><span>BECKHOFF</span><span>SCHNEIDER ELECTRIC</span><span>MITSUBISHI</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>controlstandards.in</span>
+    <span>Page 1 / 2</span>
+  </div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="page">
+  <div class="bg-grid"></div>
+  <div class="glow-a"></div>
+  <div class="glow-b"></div>
+
+  <header class="brand-header">
+    <img src="assets/logo.png" alt="Control Standards" />
+    <span class="tag">Why Control Standards Is Different</span>
+  </header>
+
+  <div class="section" style="margin-top: 4mm;">
+    <div class="section-title"><span class="num">03</span><h2>Control Standards vs. Traditional System Integrators</h2></div>
+    <div class="section-sub">Most automation projects fail on ownership, not technology. Here is what changes when Control Standards is your engineering partner.</div>
+    <table class="cmp-table">
+      <tr><th>Capability</th><th>Typical System Integrator</th><th>Control Standards</th></tr>
+      <tr><td class="cap">Engineering Ownership</td><td class="typ">Work split across multiple subcontractors</td><td class="cs">One accountable engineering team, start to finish</td></tr>
+      <tr><td class="cap">Platform Expertise</td><td class="typ">Generalist, limited OEM certification</td><td class="cs">Siemens Solution Partner + Beckhoff Certified System Integrator</td></tr>
+      <tr><td class="cap">Support Model</td><td class="typ">Reactive, break-fix ticketing</td><td class="cs">Lifecycle management — remote diagnostics + proactive spares planning</td></tr>
+      <tr><td class="cap">Modernization Approach</td><td class="typ">Like-for-like replacement only</td><td class="cs">Industry 4.0-ready upgrades — IIoT, predictive maintenance, analytics</td></tr>
+      <tr><td class="cap">Global Reach</td><td class="typ">Region-locked delivery capability</td><td class="cs">500+ projects across 35+ countries from one engineering hub</td></tr>
+      <tr><td class="cap">ROI Visibility</td><td class="typ">Estimated, rarely tracked post go-live</td><td class="cs">Measured and reported — 15–40% documented efficiency gains</td></tr>
+    </table>
+  </div>
+
+  <div class="section" style="margin-top: 6mm;">
+    <div class="section-title"><span class="num">04</span><h2>Proven Results, Not Promises</h2></div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="tag">Film Line</div>
+        <h3>High-Speed Slitter Upgrade</h3>
+        <p style="font-size:8.2px;color:var(--ink-dim);line-height:1.4;margin:0 0 4px 0;">Closed-loop tension control and automated knife positioning replaced manual adjustment on a high-speed slitting line.</p>
+        <div class="metrics">
+          <div><div class="mv">+30%</div><div class="ml">Line Speed</div></div>
+          <div><div class="mv">-45%</div><div class="ml">Rejections</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="tag">Printing</div>
+        <h3>Legacy Controller Migration</h3>
+        <p style="font-size:8.2px;color:var(--ink-dim);line-height:1.4;margin:0 0 4px 0;">Migrated a 12-station gravure press to Siemens S7-1500 with secure remote diagnostics and job recipe storage.</p>
+        <div class="metrics">
+          <div><div class="mv">-40%</div><div class="ml">Fault-Finding</div></div>
+          <div><div class="mv">+18%</div><div class="ml">Uptime</div></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="tag">Coating</div>
+        <h3>Multi-Zone Motion Sync</h3>
+        <p style="font-size:8.2px;color:var(--ink-dim);line-height:1.4;margin:0 0 4px 0;">Multi-axis synchronization and closed-loop tension control across 8 zones eliminated web breaks and material waste.</p>
+        <div class="metrics">
+          <div><div class="mv">-60%</div><div class="ml">Web Breaks</div></div>
+          <div><div class="mv">+22%</div><div class="ml">Material Yield</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top: 6mm;">
+    <div class="section-title"><span class="num">05</span><h2>Global Customer Engagement</h2></div>
+    <div class="map-wrap">
+      <img src="assets/Worldmap.png" alt="Control Standards global customer engagement map" />
+      <div class="map-caption"><b>One Bengaluru-based engineering team</b> — trusted by customers across 35+ countries including Germany, USA, UK, UAE, Singapore, South Africa, and Southeast Asia.</div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div>
+      <h3>Ready to Modernize Your Line?</h3>
+      <p>Request a technical consultation — our engineering team responds directly, no account managers in between.</p>
+    </div>
+    <div class="cta-contacts">
+      <div><span class="k">Web</span>controlstandards.in</div>
+      <div><span class="k">Mail</span>info@controlstandards.in</div>
+      <div><span class="k">Call</span>+91 97306 44552</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>© 2026 Control Standards. All rights reserved.</span>
+    <span>Page 2 / 2</span>
+  </div>
+</section>
+
+</body>
+</html>
