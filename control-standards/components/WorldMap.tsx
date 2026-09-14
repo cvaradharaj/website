@@ -4,41 +4,43 @@ import { motion } from 'framer-motion';
 
 // Hub: Bengaluru, India (headquarters). Every customer location below is
 // connected back to the hub to visualize global customer engagement.
-const hub = { name: 'Bengaluru, India (HQ)', left: 72, top: 45 };
+// Coordinates are pixel-calibrated against /public/Worldmap.png (not a
+// standard equirectangular projection), so each point sits precisely on its
+// country's landmass in this specific artwork rather than by raw lat/long.
+const hub = { name: 'Bengaluru, India (HQ)', left: 64.5, top: 53.5 };
 
-// Approximate positions (equirectangular projection) for each country served.
 const locations = [
-  { name: 'Kenya', left: 60.2, top: 56.5 },
-  { name: 'Nigeria', left: 52.1, top: 48.8 },
-  { name: 'Bahrain', left: 64.1, top: 36.1 },
-  { name: 'Bangladesh', left: 75.1, top: 37.9 },
-  { name: 'China', left: 82.3, top: 26.0 },
-  { name: 'Colombia', left: 29.4, top: 52.1 },
-  { name: 'Egypt', left: 58.7, top: 33.3 },
-  { name: 'France', left: 50.7, top: 19.4 },
-  { name: 'Germany', left: 53.7, top: 16.7 },
-  { name: 'Hungary', left: 55.3, top: 20.4 },
-  { name: 'Indonesia', left: 79.7, top: 60.2 },
-  { name: 'Iran', left: 64.3, top: 29.1 },
-  { name: 'Italy', left: 53.5, top: 24.5 },
-  { name: 'South Korea', left: 85.3, top: 27.7 },
-  { name: 'Malaysia', left: 78.3, top: 53.2 },
-  { name: 'Pakistan', left: 70.3, top: 30.6 },
-  { name: 'Peru', left: 28.6, top: 64.5 },
-  { name: 'Philippines', left: 83.6, top: 44.7 },
-  { name: 'Poland', left: 55.8, top: 16.9 },
-  { name: 'Portugal', left: 47.5, top: 26.9 },
-  { name: 'Russia', left: 60.5, top: 14.3 },
-  { name: 'Singapore', left: 78.8, top: 54.6 },
-  { name: 'South Africa', left: 56.2, top: 74.6 },
-  { name: 'Sri Lanka', left: 72.2, top: 50.4 },
-  { name: 'Taiwan', left: 83.8, top: 37.0 },
-  { name: 'Thailand', left: 77.9, top: 45.4 },
-  { name: 'Turkey', left: 59.1, top: 26.0 },
-  { name: 'UAE', left: 65.4, top: 36.9 },
-  { name: 'UK', left: 50.0, top: 17.4 },
-  { name: 'USA', left: 28.6, top: 26.7 },
-  { name: 'Vietnam', left: 79.4, top: 40.0 },
+  { name: 'Kenya', left: 55, top: 60 },
+  { name: 'Nigeria', left: 44, top: 57 },
+  { name: 'Bahrain', left: 57, top: 50 },
+  { name: 'Bangladesh', left: 70, top: 51 },
+  { name: 'China', left: 80, top: 28 },
+  { name: 'Colombia', left: 23, top: 55 },
+  { name: 'Egypt', left: 50, top: 48 },
+  { name: 'France', left: 44, top: 29 },
+  { name: 'Germany', left: 46, top: 25 },
+  { name: 'Hungary', left: 49, top: 27 },
+  { name: 'Indonesia', left: 76, top: 60 },
+  { name: 'Iran', left: 57, top: 43 },
+  { name: 'Italy', left: 48, top: 37 },
+  { name: 'South Korea', left: 80.5, top: 40 },
+  { name: 'Malaysia', left: 73, top: 58 },
+  { name: 'Pakistan', left: 60, top: 46 },
+  { name: 'Peru', left: 20, top: 63 },
+  { name: 'Philippines', left: 80, top: 53 },
+  { name: 'Poland', left: 48, top: 22 },
+  { name: 'Portugal', left: 39, top: 37 },
+  { name: 'Russia', left: 62, top: 16 },
+  { name: 'Singapore', left: 73, top: 60 },
+  { name: 'South Africa', left: 50, top: 74 },
+  { name: 'Sri Lanka', left: 65, top: 59 },
+  { name: 'Taiwan', left: 79, top: 44 },
+  { name: 'Thailand', left: 74, top: 54 },
+  { name: 'Turkey', left: 53, top: 37 },
+  { name: 'UAE', left: 60, top: 52 },
+  { name: 'UK', left: 42, top: 23 },
+  { name: 'USA', left: 22, top: 33 },
+  { name: 'Vietnam', left: 76, top: 52 },
 ];
 
 // Quadratic bezier control point, arced upward from the straight midpoint so
@@ -64,31 +66,68 @@ export default function WorldMap() {
         >
           <defs>
             <linearGradient id="routeGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.85" />
             </linearGradient>
+            <filter id="routeGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="0.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
           </defs>
-          {locations.map((loc, i) => (
-            <motion.path
-              key={loc.name}
-              d={arcPath(hub.left, hub.top, loc.left, loc.top)}
-              fill="none"
-              stroke="url(#routeGradient)"
-              strokeWidth="0.25"
-              vectorEffect="non-scaling-stroke"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.3 + i * 0.04, ease: 'easeOut' }}
-            />
-          ))}
+          {locations.map((loc, i) => {
+            const d = arcPath(hub.left, hub.top, loc.left, loc.top);
+            return (
+              <g key={loc.name}>
+                {/* soft glow base line, drawn in on first view */}
+                <motion.path
+                  d={d}
+                  fill="none"
+                  stroke="url(#routeGradient)"
+                  strokeWidth="0.45"
+                  strokeLinecap="round"
+                  vectorEffect="non-scaling-stroke"
+                  filter="url(#routeGlow)"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 0.55 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.3 + i * 0.04, ease: 'easeOut' }}
+                />
+                {/* animated flowing pulse traveling from hub to destination */}
+                <motion.path
+                  d={d}
+                  fill="none"
+                  stroke="#e0f7ff"
+                  strokeWidth="0.55"
+                  strokeLinecap="round"
+                  strokeDasharray="2.2 9"
+                  vectorEffect="non-scaling-stroke"
+                  filter="url(#routeGlow)"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: [0, 1, 1], strokeDashoffset: [0, -220] }}
+                  viewport={{ once: true }}
+                  transition={{
+                    opacity: { duration: 0.6, delay: 1.2 + i * 0.04 },
+                    strokeDashoffset: {
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: 'linear',
+                      delay: 1.2 + i * 0.04,
+                    },
+                  }}
+                />
+              </g>
+            );
+          })}
         </svg>
 
-        {/* Customer location markers */}
+        {/* Customer location markers with always-visible country labels */}
         {locations.map((loc, i) => (
           <div
             key={loc.name}
-            className="group absolute"
+            className="absolute"
             style={{ left: `${loc.left}%`, top: `${loc.top}%`, transform: 'translate(-50%, -50%)' }}
           >
             <div className="relative">
@@ -99,7 +138,7 @@ export default function WorldMap() {
               />
               <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,221,255,0.6)]" />
             </div>
-            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-6 whitespace-nowrap rounded-md bg-slate-900/90 border border-white/[0.06] px-2 py-0.5 text-[9px] font-mono text-cyan-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-2 whitespace-nowrap rounded bg-slate-950/70 px-1 py-px text-[7px] sm:text-[8px] font-mono leading-none text-cyan-200/90">
               {loc.name}
             </span>
           </div>
@@ -134,7 +173,7 @@ export default function WorldMap() {
         </motion.div>
       </div>
 
-      {/* Text list kept for readability, accessibility, and to work without JS/hover */}
+      {/* Text list kept for readability and to work without JS */}
       <div className="mt-6 flex flex-wrap justify-center gap-2">
         {locations.map((loc) => (
           <span
