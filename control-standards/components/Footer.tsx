@@ -6,13 +6,19 @@ const footerLinks = {
   Technologies: ['Siemens', 'Beckhoff', 'TwinCAT', 'SCADA', 'Motion Control', 'Drives'],
 };
 
+const companyLinks = [
+  { label: 'Careers', href: '/careers' },
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Case Studies', href: '/#case-studies' },
+];
+
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/[0.04] bg-slate-950">
       <div className="absolute inset-0 aurora-subtle pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="mb-4">
@@ -49,6 +55,24 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          <div>
+            <h4 className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-3">
+              Company
+            </h4>
+            <ul className="space-y-2">
+              {companyLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-xs text-slate-400 hover:text-cyan-400 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 
