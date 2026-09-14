@@ -44,45 +44,6 @@ const locations: { name: string; pos: [number, number] }[] = [
   { name: 'Vietnam', pos: [21.0285, 105.8542] },
 ];
 
-// Build a curved "flight route" style arc between two lat/lng points by
-// bulging a quadratic-bezier control point away from the straight midpoint,
-// always toward the north so every route arcs consistently upward on screen.
-function curvedRoute(
-  start: [number, number],
-  end: [number, number],
-  segments = 48
-): [number, number][] {
-  const [lat1, lng1] = start;
-  const [lat2, lng2] = end;
-  const midLat = (lat1 + lat2) / 2;
-  const midLng = (lng1 + lng2) / 2;
-  const dLat = lat2 - lat1;
-  const dLng = lng2 - lng1;
-  const dist = Math.max(Math.hypot(dLat, dLng), 0.0001);
-
-  // perpendicular unit vector, forced to point north (positive lat)
-  let perpLat = -dLng / dist;
-  let perpLng = dLat / dist;
-  if (perpLat < 0) {
-    perpLat = -perpLat;
-    perpLng = -perpLng;
-  }
-
-  const bulge = dist * 0.18;
-  const ctrlLat = midLat + perpLat * bulge;
-  const ctrlLng = midLng + perpLng * bulge;
-
-  const points: [number, number][] = [];
-  for (let i = 0; i <= segments; i++) {
-    const t = i / segments;
-    const inv = 1 - t;
-    const lat = inv * inv * lat1 + 2 * inv * t * ctrlLat + t * t * lat2;
-    const lng = inv * inv * lng1 + 2 * inv * t * ctrlLng + t * t * lng2;
-    points.push([lat, lng]);
-  }
-  return points;
-}
-
 export default function MapView() {
   return (
     <MapContainer
@@ -108,7 +69,7 @@ export default function MapView() {
       {locations.map((loc, i) => (
         <Polyline
           key={`line-${loc.name}`}
-          positions={curvedRoute(hub.pos, loc.pos)}
+          positions={[hub.pos, loc.pos]}
           pathOptions={{
             color: '#22d3ee',
             weight: 1.4,
@@ -120,7 +81,7 @@ export default function MapView() {
       {locations.map((loc, i) => (
         <Polyline
           key={`pulse-${loc.name}`}
-          positions={curvedRoute(hub.pos, loc.pos)}
+          positions={[hub.pos, loc.pos]}
           pathOptions={{
             color: '#e0f7ff',
             weight: 1.6,
