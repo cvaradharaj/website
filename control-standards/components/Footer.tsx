@@ -23,10 +23,10 @@ export default function Footer() {
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
-              Est. 1999 · 25+ Years of Engineering Excellence
+              Est. 2020 · Quality, Precision & Customer Satisfaction
             </p>
             <p className="text-xs text-slate-500 mt-1">
-              Global Operations: Indonesia · Turkey · South America · China
+              Based in Bengaluru, India · Serving Customers in 35+ Countries
             </p>
           </div>
 

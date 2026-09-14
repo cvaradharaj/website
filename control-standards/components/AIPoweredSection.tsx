@@ -2,89 +2,89 @@
 
 import { motion } from 'framer-motion';
 import {
-  Scan,
-  Eye,
-  Ruler,
-  Image,
-  FileDown,
-  MessageSquare,
-  Radar,
-  TrendingUp,
-  Route,
+  Radio,
+  Boxes,
+  Wrench,
+  Network,
+  Gauge,
   Cpu,
+  ShieldCheck,
+  Zap,
+  CloudCog,
+  Bot,
   Sparkles,
   ArrowRight,
 } from 'lucide-react';
 
 const features = [
   {
-    icon: Scan,
-    title: 'Intelligent OCR',
-    desc: 'Advanced OCR for document processing, handwriting recognition, and automated data extraction from various formats',
-    tags: ['Paper correction', 'Invoice processing', 'Form digitization'],
+    icon: Radio,
+    title: 'IIoT & Remote Monitoring',
+    desc: 'Sensors and connected controllers stream live machine data so plant health can be tracked from anywhere, on any shift',
+    tags: ['Live telemetry', 'Remote diagnostics', 'Alerting'],
     gradient: 'from-blue-400 to-cyan-400',
   },
   {
-    icon: Eye,
-    title: 'Augmented Reality',
-    desc: 'AR-powered visual merchandising audits, equipment maintenance guidance, and interactive training modules',
-    tags: ['Visual merchandising', 'Remote assistance', 'Training overlays'],
+    icon: Boxes,
+    title: 'Digital Twin & Simulation',
+    desc: 'Virtual commissioning and process simulation validate PLC logic and mechanical behavior before machines are built',
+    tags: ['Virtual commissioning', 'Process modeling', 'Risk reduction'],
     gradient: 'from-violet-400 to-purple-400',
   },
   {
-    icon: Ruler,
-    title: 'Computer Vision Measurement',
-    desc: 'AI-based measurement and dimension extraction from photos for contactless verification and compliance',
-    tags: ['Space measurement', 'Product sizing', 'Shelf compliance'],
+    icon: Wrench,
+    title: 'Predictive Maintenance',
+    desc: 'Condition monitoring and drive/motor diagnostics flag wear before it causes unplanned downtime',
+    tags: ['Vibration analysis', 'Condition monitoring', 'Downtime avoidance'],
     gradient: 'from-cyan-400 to-emerald-400',
   },
   {
-    icon: Image,
-    title: 'Image Comparison & Analysis',
-    desc: 'Automated visual comparison against standards detecting deviations in placement, quality, and compliance',
-    tags: ['Before/after', 'Standard adherence', 'Defect detection'],
+    icon: Network,
+    title: 'SCADA, MES & ERP Integration',
+    desc: 'Shop-floor controllers connected to SCADA, MES, and ERP systems for a single source of production truth',
+    tags: ['SCADA', 'MES connectivity', 'ERP data sync'],
     gradient: 'from-amber-400 to-orange-400',
   },
   {
-    icon: FileDown,
-    title: 'Intelligent Compression',
-    desc: 'AI-optimized image and video compression reducing bandwidth requirements by up to 80% while maintaining quality',
-    tags: ['Low bandwidth', 'Storage optimization', 'Fast uploads'],
+    icon: Gauge,
+    title: 'OEE & Production Analytics',
+    desc: 'Real-time OEE, downtime, and quality dashboards turn machine data into actionable production decisions',
+    tags: ['OEE tracking', 'Downtime analytics', 'Quality metrics'],
     gradient: 'from-pink-400 to-rose-400',
   },
   {
-    icon: MessageSquare,
-    title: 'Natural Language Processing',
-    desc: 'Smart search, automated report generation, sentiment analysis from field feedback with multi-language support',
-    tags: ['Smart search', 'Auto-reports', 'Sentiment analysis'],
+    icon: Cpu,
+    title: 'Edge Computing on the Plant Floor',
+    desc: 'Local processing at the controller level for deterministic control, faster response, and reduced cloud dependency',
+    tags: ['Edge PLC logic', 'Low latency', 'Offline resilience'],
     gradient: 'from-indigo-400 to-blue-400',
   },
   {
-    icon: Radar,
-    title: 'Object Detection & Recognition',
-    desc: 'Automated identification of products, equipment, safety violations, and compliance issues from field photographs',
-    tags: ['Product recognition', 'Safety monitoring', 'Asset tracking'],
+    icon: ShieldCheck,
+    title: 'OT Cybersecurity',
+    desc: 'Network segmentation, secure remote access, and hardened architectures protect control systems from threats',
+    tags: ['Network segmentation', 'Secure remote access', 'OT hardening'],
     gradient: 'from-teal-400 to-cyan-400',
   },
   {
-    icon: TrendingUp,
-    title: 'Predictive Analytics',
-    desc: 'ML models for task duration prediction, resource optimization, and anomaly detection in operations',
-    tags: ['Task estimation', 'Resource planning', 'Anomaly detection'],
+    icon: Zap,
+    title: 'Energy Monitoring & Optimization',
+    desc: 'Power and energy consumption tracking at the machine level to cut costs and support sustainability targets',
+    tags: ['Energy metering', 'Load optimization', 'Sustainability'],
     gradient: 'from-blue-400 to-indigo-400',
   },
   {
-    icon: Route,
-    title: 'Intelligent Routing',
-    desc: 'AI-powered task assignment and route optimization considering traffic, priority, skills, and resource availability',
-    tags: ['Route optimization', 'Smart assignment', 'Load balancing'],
+    icon: CloudCog,
+    title: 'Cloud-Connected Dashboards',
+    desc: 'Secure cloud connectivity brings production, quality, and maintenance data to managers wherever they are',
+    tags: ['Remote visibility', 'Multi-site dashboards', 'Mobile access'],
     gradient: 'from-green-400 to-teal-400',
   },
   {
-    icon: Cpu,
-    title: 'Edge AI Processing',
-    desc: 'On-device machine learning for offline capability, real-time processing, and privacy-preserving computations',
-    tags: ['Offline OCR', 'Real-time validation', 'Privacy protection'],
+    icon: Bot,
+    title: 'Robotics & Motion Integration',
+    desc: 'Servo motion, robotics, and synchronized multi-axis control integrated with line PLCs for coordinated automation',
+    tags: ['Multi-axis motion', 'Robot integration', 'Synchronized control'],
     gradient: 'from-orange-400 to-red-400',
   },
 ];
@@ -128,7 +128,7 @@ export default function AIPoweredSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 text-xs font-mono text-blue-400/80 tracking-[0.15em] uppercase mb-6"
           >
             <Sparkles className="w-3 h-3" />
-            AI & AR Powered
+            Industry 4.0 Ready
           </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mt-4 leading-tight">
             Next-Generation{' '}
@@ -137,8 +137,8 @@ export default function AIPoweredSection() {
             </span>
           </h2>
           <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-            Advanced AI and augmented reality capabilities that transform how you measure, verify,
-            and optimize field operations
+            Connected, data-driven automation — IIoT, digital twins, and predictive analytics that turn
+            the plant floor into a smarter, self-monitoring operation
           </p>
         </motion.div>
 
@@ -191,14 +191,14 @@ export default function AIPoweredSection() {
             <h3 className="text-sm font-mono text-slate-500 uppercase tracking-wider">
               Proven Impact
             </h3>
-            <p className="text-slate-400 text-sm mt-1">Real-world results from AI-powered field operations</p>
+            <p className="text-slate-400 text-sm mt-1">Real-world results from connected, Industry 4.0-ready automation</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { value: '95%', label: 'Accuracy', sub: 'Visual Merchandising' },
-              { value: '10x', label: 'Faster', sub: 'Document Processing' },
-              { value: '90%', label: 'Automation', sub: 'Quality Inspection' },
-              { value: '30%', label: 'Savings', sub: 'Field Optimization' },
+              { value: '40%', label: 'Downtime Cut', sub: 'Predictive Maintenance' },
+              { value: '99.8%', label: 'Uptime', sub: 'Remote Monitoring' },
+              { value: '35%', label: 'Efficiency Gain', sub: 'OEE Analytics' },
+              { value: '20%', label: 'Energy Savings', sub: 'Load Optimization' },
             ].map((s) => (
               <div key={s.label} className="glass rounded-xl p-5 text-center">
                 <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
@@ -215,7 +215,7 @@ export default function AIPoweredSection() {
               href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white text-sm font-semibold transition-all shadow-lg shadow-blue-500/25"
             >
-              Request AI Demo <ArrowRight className="w-4 h-4" />
+              Request Industry 4.0 Consultation <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </motion.div>

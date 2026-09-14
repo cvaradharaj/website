@@ -12,8 +12,8 @@ const whatPoints = [
   },
   {
     icon: Globe,
-    title: 'Global Delivery Since 1999',
-    desc: 'Headquartered in Bengaluru with project delivery across 18 countries including Indonesia, Turkey, South America, and China.',
+    title: 'Based in Bengaluru, Serving the World',
+    desc: 'Headquartered in Bengaluru, India, with a customer base spread across the world — 500+ projects delivered across 35+ countries including Germany, USA, UK, UAE, Singapore, South Africa, and Southeast Asia.',
   },
   {
     icon: ShieldCheck,
@@ -22,8 +22,8 @@ const whatPoints = [
   },
   {
     icon: Users,
-    title: '25+ Years of Engineering Excellence',
-    desc: 'Trusted by machine builders worldwide for precision control systems, drive upgrades, and machine modernization projects.',
+    title: 'Built on Quality and Precision',
+    desc: 'Founded in 2020 with a vision of quality, precision, and the highest engineering standards — trusted by machine builders worldwide for control systems, drive upgrades, and machine modernization.',
   },
 ];
 
@@ -35,7 +35,7 @@ const whyPoints = [
   },
   {
     icon: TrendingUp,
-    title: 'Proven ROI',
+    title: 'Proven ROI for Customers',
     desc: 'Our automation solutions consistently deliver 15-40% efficiency gains, reduced downtime, and measurable production improvements.',
   },
   {
@@ -45,8 +45,8 @@ const whyPoints = [
   },
   {
     icon: HeadphonesIcon,
-    title: 'Lifetime Support',
-    desc: 'Every project comes with ongoing technical support, remote diagnostics, and rapid on-site response when needed.',
+    title: 'Lifecycle Management of Delivered Services',
+    desc: 'Every project is backed by full lifecycle management — remote diagnostics, spares planning, upgrades, and rapid on-site response for as long as the system runs.',
   },
 ];
 
@@ -85,8 +85,8 @@ export default function WhatWhySection() {
             Control Standards
           </h2>
           <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-            Two decades of industrial automation engineering excellence — understanding what we do and why
-            global machine builders trust us.
+            Since 2020, industrial automation engineering built on quality, precision, and customer
+            satisfaction — understanding what we do and why global machine builders trust us.
           </p>
         </motion.div>
 
@@ -168,7 +168,7 @@ export default function WhatWhySection() {
           </motion.div>
         </div>
 
-        {/* World Map */}
+        {/* Global Customer Engagement Map */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -176,6 +176,17 @@ export default function WhatWhySection() {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="mt-16"
         >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">
+              Global Customer{' '}
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                Engagement
+              </span>
+            </h3>
+            <p className="text-slate-400 mt-2 max-w-2xl mx-auto text-sm">
+              One team in Bengaluru, India, engaging customers across 35+ countries worldwide.
+            </p>
+          </div>
           <WorldMap />
         </motion.div>
       </div>

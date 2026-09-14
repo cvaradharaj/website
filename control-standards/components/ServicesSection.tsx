@@ -167,7 +167,7 @@ export default function ServicesSection() {
             </span>
           </h2>
           <p className="text-slate-400 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-            25+ years of delivering precision control systems to machine builders across converting,
+            Since 2020, delivering precision control systems to machine builders across converting,
             printing, and packaging industries.
           </p>
         </motion.div>

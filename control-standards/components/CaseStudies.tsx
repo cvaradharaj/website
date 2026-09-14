@@ -2,9 +2,25 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ExternalLink, Factory, RefreshCw, Gauge, Wifi, CheckCircle } from 'lucide-react';
+import { ChevronDown, ExternalLink, Factory, RefreshCw, Gauge, Wifi, Scissors, CheckCircle } from 'lucide-react';
 
 const cases = [
+  {
+    id: 'high-speed-slitter',
+    icon: Scissors,
+    title: 'Film Line – High-Speed Slitter Upgrade',
+    subtitle: 'Process & Productivity Enhancement',
+    image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80',
+    color: 'cyan',
+    challenge: 'A high-speed film slitting line was constrained by an outdated tension control and knife-positioning system, causing web wander, off-spec slit widths, and frequent roll rejections at higher line speeds.',
+    solution: 'Upgraded to closed-loop tension control with high-resolution encoders, automated knife positioning, and synchronized winder control, enabling higher line speeds with tighter width tolerances and faster changeovers.',
+    technologies: ['Siemens S7-1500', 'Servo Winder Control', 'High-Resolution Encoders', 'HMI Recipe Management'],
+    results: [
+      { label: 'Line Speed Increase', value: '30%' },
+      { label: 'Roll Rejection Rate', value: '-45%' },
+      { label: 'Changeover Time', value: '-25%' },
+    ],
+  },
   {
     id: 'film-line',
     icon: Factory,

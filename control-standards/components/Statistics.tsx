@@ -5,9 +5,9 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const stats = [
-  { value: '25+', label: 'Years of Excellence', suffix: '' },
-  { value: '1200', label: 'Projects Delivered', suffix: '+' },
-  { value: '18', label: 'Countries Served', suffix: '' },
+  { value: '2020', label: 'Founded In', suffix: '' },
+  { value: '500', label: 'Projects Delivered', suffix: '+' },
+  { value: '35', label: 'Countries Served', suffix: '+' },
   { value: '99.8', label: 'System Uptime', suffix: '%' },
 ];
 

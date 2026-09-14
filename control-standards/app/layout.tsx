@@ -4,7 +4,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Control Standards | Industrial Automation Engineers — Bengaluru',
   description:
-    '25+ years of global industrial automation engineering excellence. Siemens & Beckhoff PLC programming, drive systems, motion control, and control panel manufacturing.',
+    'Founded in 2020 in Bengaluru, India, delivering quality, precision, and customer satisfaction. 500+ projects completed across 35+ countries — Siemens & Beckhoff PLC programming, drive systems, motion control, and control panel manufacturing.',
   keywords: [
     'Siemens PLC Programmer India',
     'Beckhoff PLC System Integrator',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Control Standards — Industrial Automation Engineering',
-    description: '25+ years of global automation engineering from Bengaluru.',
+    description: 'Since 2020, industrial automation engineering from Bengaluru, serving customers across 35+ countries.',
     locale: 'en_IN',
     type: 'website',
   },

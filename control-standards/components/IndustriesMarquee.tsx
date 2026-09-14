@@ -43,7 +43,7 @@ export default function IndustriesMarquee() {
             Global Sector <span className="text-gradient-cyan">Expertise</span>
           </h2>
           <p className="text-slate-400 mt-4 max-w-xl mx-auto">
-            Delivering automation solutions across 8 core industrial sectors in 18 countries.
+            Delivering automation solutions across 8 core industrial sectors in 35+ countries.
           </p>
         </motion.div>
 

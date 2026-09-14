@@ -68,7 +68,7 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-              EST. 1999 — BENGALURU, INDIA
+              EST. 2020 — BENGALURU, INDIA
             </motion.div>
 
             <motion.h1
@@ -87,7 +87,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-xl"
             >
-              25+ Years of Engineering Excellence from Bengaluru. Trusted by machine builders across 12 countries for PLC programming, drive systems, and control panels.
+              Based in Bengaluru, India, delivering quality, precision, and reliability to a customer base spread across the world. 500+ projects completed for machine builders across 35+ countries in PLC programming, drive systems, and control panels.
             </motion.p>
 
             <motion.div
@@ -175,9 +175,9 @@ export default function HeroSection() {
               <div className="absolute inset-0 flex items-center justify-center p-6">
                 <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
                   {[
-                    { value: '25+', label: 'Years' },
+                    { value: '2020', label: 'Founded' },
                     { value: '500+', label: 'Projects' },
-                    { value: '18', label: 'Countries' },
+                    { value: '35+', label: 'Countries' },
                     { value: '99.8%', label: 'Uptime' },
                   ].map((stat, i) => (
                     <motion.div

@@ -9,9 +9,6 @@ import Statistics from '@/components/Statistics';
 import AIPoweredSection from '@/components/AIPoweredSection';
 import IndustriesMarquee from '@/components/IndustriesMarquee';
 import CaseStudies from '@/components/CaseStudies';
-import Testimonials from '@/components/Testimonials';
-import DataProtection from '@/components/DataProtection';
-import DeploymentSection from '@/components/DeploymentSection';
 import ContactSection from '@/components/ContactSection';
 import DigitalSolutionsSection from '@/components/DigitalSolutionsSection';
 import Footer from '@/components/Footer';
@@ -32,9 +29,6 @@ export default function Home() {
       <AIPoweredSection />
       <IndustriesMarquee />
       <CaseStudies />
-      <Testimonials />
-      <DataProtection />
-      <DeploymentSection />
       <DigitalSolutionsSection />
       <ContactSection />
       <Footer />
