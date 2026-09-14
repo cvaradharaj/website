@@ -6,11 +6,12 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const links = [
-  { href: '#services', label: 'Services' },
-  { href: '#industries', label: 'Industries' },
-  { href: '#technologies', label: 'Technologies' },
-  { href: '#case-studies', label: 'Case Studies' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#industries', label: 'Industries' },
+  { href: '/#technologies', label: 'Technologies' },
+  { href: '/#case-studies', label: 'Case Studies' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -20,7 +21,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-3xl border-b border-white/[0.03]" />
       <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center group">
+        <a href="/" className="flex items-center group">
           <img
             src="/logo-sm.png"
             alt="Control Standards"
@@ -39,7 +40,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             className="text-sm font-medium px-5 py-2 rounded-xl bg-blue-500 hover:bg-blue-400 text-white transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-400/30"
           >
             Request Consultation
@@ -79,7 +80,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setOpen(false)}
                 className="block text-center px-4 py-3 mt-2 rounded-xl bg-blue-500 hover:bg-blue-400 text-white text-sm font-medium transition-colors"
               >

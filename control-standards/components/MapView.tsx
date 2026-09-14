@@ -68,25 +68,15 @@ export default function MapView() {
 
       {locations.map((loc, i) => (
         <Polyline
-          key={`line-${loc.name}`}
+          key={`route-${loc.name}`}
           positions={[hub.pos, loc.pos]}
           pathOptions={{
-            color: '#22d3ee',
-            weight: 1.4,
-            opacity: 0.45,
-            className: `route-line route-delay-${i % 10}`,
-          }}
-        />
-      ))}
-      {locations.map((loc, i) => (
-        <Polyline
-          key={`pulse-${loc.name}`}
-          positions={[hub.pos, loc.pos]}
-          pathOptions={{
-            color: '#e0f7ff',
-            weight: 1.6,
-            opacity: 0.85,
-            className: `route-pulse route-delay-${i % 10}`,
+            color: '#7dd3e8',
+            weight: 1.1,
+            opacity: 0.8,
+            dashArray: '1 7',
+            lineCap: 'round',
+            className: `route-dotted route-delay-${i % 10}`,
           }}
         />
       ))}

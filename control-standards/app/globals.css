@@ -247,42 +247,31 @@
   font-size: 10px;
 }
 
-/* Connector routes: a soft base line draws/fades in on load, then a brighter
-   pulse flows continuously from Bengaluru out to each country. */
-.route-line {
+/* Connector routes: thin dotted lines that fade in, then flow continuously
+   with a "traveling dots" animation from Bengaluru out to each country. */
+.route-dotted {
   opacity: 0;
-  animation: cs-route-in 1s ease-out forwards;
+  animation:
+    cs-route-in 0.8s ease-out forwards,
+    cs-route-flow 2.6s linear infinite;
 }
 @keyframes cs-route-in {
   from { opacity: 0; }
-  to { opacity: 0.45; }
-}
-
-.route-pulse {
-  stroke-dasharray: 3 11;
-  opacity: 0;
-  animation:
-    cs-route-in-pulse 0.6s ease-out forwards,
-    cs-route-flow 3.2s linear infinite;
-  animation-delay: inherit;
-}
-@keyframes cs-route-in-pulse {
-  from { opacity: 0; }
-  to { opacity: 0.85; }
+  to { opacity: 0.8; }
 }
 @keyframes cs-route-flow {
   to {
-    stroke-dashoffset: -140;
+    stroke-dashoffset: -128;
   }
 }
 
-.route-delay-0 { animation-delay: 0s, 1s; }
-.route-delay-1 { animation-delay: 0.08s, 1.08s; }
-.route-delay-2 { animation-delay: 0.16s, 1.16s; }
-.route-delay-3 { animation-delay: 0.24s, 1.24s; }
-.route-delay-4 { animation-delay: 0.32s, 1.32s; }
-.route-delay-5 { animation-delay: 0.4s, 1.4s; }
-.route-delay-6 { animation-delay: 0.48s, 1.48s; }
-.route-delay-7 { animation-delay: 0.56s, 1.56s; }
-.route-delay-8 { animation-delay: 0.64s, 1.64s; }
-.route-delay-9 { animation-delay: 0.72s, 1.72s; }
+.route-delay-0 { animation-delay: 0s, 0.8s; }
+.route-delay-1 { animation-delay: 0.08s, 0.88s; }
+.route-delay-2 { animation-delay: 0.16s, 0.96s; }
+.route-delay-3 { animation-delay: 0.24s, 1.04s; }
+.route-delay-4 { animation-delay: 0.32s, 1.12s; }
+.route-delay-5 { animation-delay: 0.4s, 1.2s; }
+.route-delay-6 { animation-delay: 0.48s, 1.28s; }
+.route-delay-7 { animation-delay: 0.56s, 1.36s; }
+.route-delay-8 { animation-delay: 0.64s, 1.44s; }
+.route-delay-9 { animation-delay: 0.72s, 1.52s; }
