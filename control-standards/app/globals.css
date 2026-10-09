@@ -7,7 +7,7 @@
 }
 
 @theme {
-  --font-sans: 'Ubuntu', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Barlow', 'Inter', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 
   --color-slate-950: #070714;
@@ -212,6 +212,308 @@
   .perspective-1000 { perspective: 1000px; }
   .preserve-3d { transform-style: preserve-3d; }
   .backface-hidden { backface-visibility: hidden; }
+}
+
+/* Light theme. Unlayered so these win over Tailwind utilities and the component classes above.
+   Only colours and backgrounds change; markup and copy are untouched. */
+:root {
+  --lt-bg: #b3d7f1;
+  --lt-ink: #0b2a44;
+  --lt-ink-soft: #35536b;
+  --lt-ink-mute: #4a6479;
+  --lt-accent: #1b6aa8;
+  --lt-line: rgba(11, 42, 68, 0.12);
+}
+
+html {
+  scrollbar-color: #a9cbe6 var(--lt-bg);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lt-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a9cbe6;
+}
+
+body {
+  color: var(--lt-ink);
+  background-color: var(--lt-bg);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 88% 0%, rgba(0, 120, 180, 0.32), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 10% 100%, rgba(255, 255, 255, 0.4), transparent 70%),
+    radial-gradient(rgba(8, 92, 150, 0.5) 1.2px, transparent 1.6px),
+    linear-gradient(rgba(8, 92, 150, 0.26) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 92, 150, 0.26) 1px, transparent 1px),
+    linear-gradient(135deg, #cde6f8, #7db9e3);
+  background-size: auto, auto, 22px 22px, 88px 88px, 88px 88px, auto;
+}
+
+/* Slow light sheen drifting across the page background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.55) 50%, transparent 60%);
+  background-size: 250% 100%;
+  animation: lt-sheen 14s ease-in-out infinite;
+}
+
+@keyframes lt-sheen {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+
+/* Section and surface backgrounds: dark slate becomes translucent white */
+main[class*="bg-slate-9"] {
+  background-color: transparent;
+}
+
+[class*="bg-slate-9"],
+[class*="bg-slate-8"] {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+[class*="bg-white/"] {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+footer.bg-slate-950 {
+  background-color: rgba(179, 215, 241, 0.55);
+}
+
+[class*="border-white/"],
+[class*="border-slate-"] {
+  border-color: var(--lt-line);
+}
+
+.glass,
+.glass-strong {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--lt-line);
+  box-shadow: 0 12px 30px rgba(11, 42, 68, 0.08);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(27, 106, 168, 0.3);
+}
+
+/* Text colours */
+[class*="text-white"]:not([class*="bg-blue-"]):not([class*="bg-green-"]):not([class*="bg-gradient"]) {
+  color: var(--lt-ink);
+}
+
+[class*="text-slate-2"],
+[class*="text-slate-3"] {
+  color: #2a4860;
+}
+
+[class*="text-slate-4"] {
+  color: var(--lt-ink-soft);
+}
+
+[class*="text-slate-5"],
+[class*="text-slate-6"] {
+  color: var(--lt-ink-mute);
+}
+
+[class*="text-cyan-"],
+[class*="text-blue-"] {
+  color: var(--lt-accent);
+}
+
+/* Secondary text and accents on the blue page background (Solution Modules and case studies keep their dark styling) */
+[class*="text-slate-5"]:not(#services *):not(#case-studies *),
+[class*="text-slate-6"]:not(#services *):not(#case-studies *) {
+  color: #2a4860;
+}
+
+[class*="text-cyan-"]:not(#services *):not(#case-studies *),
+[class*="text-blue-"]:not(#services *):not(#case-studies *) {
+  color: #0f4f80;
+}
+
+.text-gradient-cyan,
+.text-gradient-blue,
+[class*="bg-clip-text"] {
+  background: linear-gradient(135deg, #1b6aa8, #0a7f8c);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Dark dashboard panels stay dark (their canvas artwork is light-on-dark) */
+.cs-dark-panel {
+  background: linear-gradient(135deg, #0b1d33, #07111f);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e0e0f0;
+  box-shadow: 0 20px 50px rgba(7, 17, 31, 0.35);
+}
+
+.cs-dark-panel [class*="text-"] {
+  color: #e0e0f0 !important;
+}
+
+.cs-dark-panel [class*="bg-white/"],
+.cs-dark-panel [class*="bg-slate-"] {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.cs-dark-panel [class*="border-"] {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hero: blue background with grid and dot pattern */
+#hero {
+  --hero-line: rgba(8, 92, 150, 0.26);
+  --hero-dot: rgba(8, 92, 150, 0.5);
+  background-color: #b3d7f1;
+  background-image:
+    radial-gradient(circle at 88% 12%, rgba(0, 120, 180, 0.32), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.4), transparent 40%),
+    radial-gradient(circle, var(--hero-dot) 1.2px, transparent 1.6px),
+    linear-gradient(var(--hero-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-line) 1px, transparent 1px),
+    linear-gradient(135deg, #cde6f8, #7db9e3);
+  background-size: auto, auto, 22px 22px, 88px 88px, 88px 88px, auto;
+}
+
+#hero h1 .text-gradient-cyan {
+  background: linear-gradient(90deg, #0b4f80, #06606e);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+#hero .text-slate-500 {
+  color: #2a4860;
+}
+
+#hero .text-blue-400 {
+  color: #0f4f80;
+}
+
+#hero .bg-blue-500,
+nav .bg-blue-500 {
+  background-color: #1b5fa0;
+}
+
+/* Solution Modules: dark blue section with light text */
+#services {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(0, 221, 255, 0.14), transparent 40%),
+    linear-gradient(160deg, #13395a, #0a2034);
+  color: #e6f2fb;
+}
+
+#services h2,
+#services h3 {
+  color: #ffffff !important;
+  background-image: none !important;
+}
+
+#services h2 span {
+  background: linear-gradient(90deg, #7fdcff, #9ec5ff 55%, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#services p {
+  color: #bcd2e3;
+}
+
+#services span.rounded-full {
+  background: rgba(68, 136, 255, 0.14);
+  border-color: rgba(120, 170, 255, 0.35);
+  color: #cfe2ff;
+}
+
+#services .group {
+  background: linear-gradient(160deg, #17486f 0%, #0c2a46 100%);
+  border-color: rgba(143, 200, 240, 0.22);
+  box-shadow: 0 18px 40px rgba(2, 12, 24, 0.35);
+}
+
+#services ul li {
+  color: #d2e3ef;
+}
+
+#services p.font-mono,
+#services a[style],
+#services svg.relative {
+  opacity: 1;
+  filter: brightness(1.45);
+}
+
+/* Case study accordion cards (the only glass elements with overflow-hidden) */
+#case-studies .glass.overflow-hidden {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(160deg, #17486f 0%, #0c2a46 100%);
+  border-color: rgba(143, 200, 240, 0.22);
+  box-shadow: 0 18px 40px rgba(7, 17, 31, 0.25);
+}
+
+#case-studies .glass.overflow-hidden h3 {
+  color: #ffffff;
+}
+
+#case-studies .glass.overflow-hidden h4 {
+  color: #8fdcff;
+}
+
+#case-studies .glass.overflow-hidden p {
+  color: #d2e3ef;
+}
+
+#case-studies .glass.overflow-hidden p.font-mono {
+  color: #8fdcff;
+  opacity: 1;
+}
+
+#case-studies .glass.overflow-hidden svg.w-5 {
+  color: #8fe9ff;
+}
+
+#case-studies .glass.overflow-hidden svg.w-4 {
+  color: #9fc0d8;
+}
+
+#case-studies .glass.overflow-hidden span.rounded-full {
+  background: rgba(0, 221, 255, 0.12);
+  border-color: rgba(0, 221, 255, 0.35);
+  color: #cdf6ff;
+}
+
+#case-studies .glass.overflow-hidden .glass {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(143, 200, 240, 0.2);
+  box-shadow: none;
+}
+
+#case-studies .glass.overflow-hidden .text-lg {
+  color: #8fe9ff;
+}
+
+#case-studies .glass.overflow-hidden [class*="text-[10px]"] {
+  color: #b4cde0;
+}
+
+#case-studies .glass.overflow-hidden > button {
+  background-color: transparent;
+}
+
+#case-studies .glass.overflow-hidden > button:hover {
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 /* Leaflet global customer engagement map — dark theme overrides */

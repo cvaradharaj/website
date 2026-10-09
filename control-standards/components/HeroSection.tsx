@@ -17,7 +17,7 @@ const floatingIcons = [Cpu, CircuitBoard, Gauge, Wifi, Activity];
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Aurora background */}
       <div className="absolute inset-0 aurora pointer-events-none" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
@@ -144,7 +144,7 @@ export default function HeroSection() {
             transition={{ delay: 0.3, duration: 1 }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative w-full aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
+            <div className="cs-dark-panel relative w-full aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden glass-strong glow-cyan">
               <HeroAnimation />
               <motion.div
                 className="absolute inset-0 bg-cover bg-center opacity-40"
