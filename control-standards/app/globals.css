@@ -217,16 +217,17 @@
 /* Light theme. Unlayered so these win over Tailwind utilities and the component classes above.
    Only colours and backgrounds change; markup and copy are untouched. */
 :root {
-  --lt-bg: #b3d7f1;
-  --lt-ink: #0b2a44;
-  --lt-ink-soft: #35536b;
-  --lt-ink-mute: #4a6479;
-  --lt-accent: #1b6aa8;
-  --lt-line: rgba(11, 42, 68, 0.12);
+  --lt-bg: #ffffff;
+  --lt-surface: #f4f7fb;
+  --lt-ink: #0f172a;
+  --lt-ink-soft: #334155;
+  --lt-ink-mute: #475569;
+  --lt-accent: #1b5fa0;
+  --lt-line: #e2e8f0;
 }
 
 html {
-  scrollbar-color: #a9cbe6 var(--lt-bg);
+  scrollbar-color: #cbd5e1 var(--lt-bg);
 }
 
 ::-webkit-scrollbar-track {
@@ -234,61 +235,48 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a9cbe6;
+  background: #cbd5e1;
 }
 
 body {
   color: var(--lt-ink);
+  background: var(--lt-bg);
+}
+
+/* Decorative glows, grids, noise, and blur blobs are hidden for a plain white page */
+.aurora,
+.aurora-subtle,
+.mesh-gradient,
+.bg-grid,
+.bg-grid-cyan {
+  background: none !important;
+}
+
+.noise-overlay::after,
+[class*=" blur-"],
+[class~="w-1"][class~="h-1"],
+[class*="bg-cover"][class*="opacity-"]:not(.cs-dark-panel *) {
+  display: none;
+}
+
+/* Surfaces: sections stay white */
+main[class*="bg-slate-9"],
+footer.bg-slate-950 {
   background-color: var(--lt-bg);
-  background-image:
-    radial-gradient(ellipse 70% 50% at 88% 0%, rgba(0, 120, 180, 0.32), transparent 70%),
-    radial-gradient(ellipse 60% 45% at 10% 100%, rgba(255, 255, 255, 0.4), transparent 70%),
-    radial-gradient(rgba(8, 92, 150, 0.5) 1.2px, transparent 1.6px),
-    linear-gradient(rgba(8, 92, 150, 0.26) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(8, 92, 150, 0.26) 1px, transparent 1px),
-    linear-gradient(135deg, #cde6f8, #7db9e3);
-  background-size: auto, auto, 22px 22px, 88px 88px, 88px 88px, auto;
-}
-
-/* Slow light sheen drifting across the page background */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.55) 50%, transparent 60%);
-  background-size: 250% 100%;
-  animation: lt-sheen 14s ease-in-out infinite;
-}
-
-@keyframes lt-sheen {
-  from { background-position: 100% 0; }
-  to { background-position: -100% 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before {
-    animation: none;
-  }
-}
-
-/* Section and surface backgrounds: dark slate becomes translucent white */
-main[class*="bg-slate-9"] {
-  background-color: transparent;
-}
-
-[class*="bg-slate-9"],
-[class*="bg-slate-8"] {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
-[class*="bg-white/"] {
-  background-color: rgba(255, 255, 255, 0.7);
 }
 
 footer.bg-slate-950 {
-  background-color: rgba(179, 215, 241, 0.55);
+  border-top-color: var(--lt-line);
+}
+
+nav [class*="bg-slate-9"] {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+[class*="bg-slate-9"],
+[class*="bg-slate-8"],
+[class*="bg-white/"] {
+  background-color: var(--lt-surface);
 }
 
 [class*="border-white/"],
@@ -296,16 +284,23 @@ footer.bg-slate-950 {
   border-color: var(--lt-line);
 }
 
+/* Links and buttons using glass stay white; cards are set in the dark-card block */
 .glass,
 .glass-strong {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--lt-bg);
   border-color: var(--lt-line);
-  box-shadow: 0 12px 30px rgba(11, 42, 68, 0.08);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(15, 23, 42, 0.06);
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(27, 106, 168, 0.3);
+  border-color: rgba(27, 95, 160, 0.4);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+}
+
+.liquid-glass-icon {
+  background: linear-gradient(135deg, #f0f6fc, #e4eef8);
+  border-color: #d5e3f1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 /* Text colours */
@@ -315,7 +310,7 @@ footer.bg-slate-950 {
 
 [class*="text-slate-2"],
 [class*="text-slate-3"] {
-  color: #2a4860;
+  color: var(--lt-ink-soft);
 }
 
 [class*="text-slate-4"] {
@@ -332,15 +327,11 @@ footer.bg-slate-950 {
   color: var(--lt-accent);
 }
 
-/* Secondary text and accents on the blue page background (Solution Modules and case studies keep their dark styling) */
-[class*="text-slate-5"]:not(#services *):not(#case-studies *),
-[class*="text-slate-6"]:not(#services *):not(#case-studies *) {
-  color: #2a4860;
-}
-
-[class*="text-cyan-"]:not(#services *):not(#case-studies *),
-[class*="text-blue-"]:not(#services *):not(#case-studies *) {
-  color: #0f4f80;
+/* Body text is medium weight outside the dark sections, unless a font class is set */
+[class*="text-slate-4"]:not(#services *):not(#case-studies *):not(:is([class*="font-"])),
+[class*="text-slate-5"]:not(#services *):not(#case-studies *):not(:is([class*="font-"])),
+[class*="text-slate-6"]:not(#services *):not(#case-studies *):not(:is([class*="font-"])) {
+  font-weight: 500;
 }
 
 .text-gradient-cyan,
@@ -372,19 +363,9 @@ footer.bg-slate-950 {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Hero: blue background with grid and dot pattern */
+/* Hero: plain white; the stats panel provides the dark highlight */
 #hero {
-  --hero-line: rgba(8, 92, 150, 0.26);
-  --hero-dot: rgba(8, 92, 150, 0.5);
-  background-color: #b3d7f1;
-  background-image:
-    radial-gradient(circle at 88% 12%, rgba(0, 120, 180, 0.32), transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.4), transparent 40%),
-    radial-gradient(circle, var(--hero-dot) 1.2px, transparent 1.6px),
-    linear-gradient(var(--hero-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--hero-line) 1px, transparent 1px),
-    linear-gradient(135deg, #cde6f8, #7db9e3);
-  background-size: auto, auto, 22px 22px, 88px 88px, 88px 88px, auto;
+  background: var(--lt-bg);
 }
 
 #hero h1 .text-gradient-cyan {
@@ -394,11 +375,11 @@ footer.bg-slate-950 {
 }
 
 #hero .text-slate-500 {
-  color: #2a4860;
+  color: var(--lt-ink-mute);
 }
 
 #hero .text-blue-400 {
-  color: #0f4f80;
+  color: #0b3f6b;
 }
 
 #hero .bg-blue-500,
@@ -406,35 +387,90 @@ nav .bg-blue-500 {
   background-color: #1b5fa0;
 }
 
-/* Solution Modules: dark blue section with light text */
-#services {
-  background:
-    radial-gradient(circle at 85% 10%, rgba(0, 221, 255, 0.14), transparent 40%),
-    linear-gradient(160deg, #13395a, #0a2034);
-  color: #e6f2fb;
+[class~="bg-blue-500"],
+[class~="bg-blue-600"],
+a[class*="from-blue-"],
+button[class*="from-blue-"],
+a[class*="from-cyan-"],
+button[class*="from-cyan-"] {
+  background-color: var(--lt-accent);
+  background-image: none;
 }
 
-#services h2,
-#services h3 {
+/* Cards and tiles: dark navy with light text, matching the Solution Modules cards */
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) {
+  background: linear-gradient(160deg, #17486f 0%, #0c2a46 100%);
+  border-color: rgba(143, 200, 240, 0.22);
+  box-shadow: 0 18px 40px rgba(2, 12, 24, 0.25);
+}
+
+.glass-hover:not(a, button, .cs-dark-panel):hover {
+  border-color: rgba(143, 200, 240, 0.45);
+}
+
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) :is(h1, h2, h3, h4, h5, h6, strong, [class*="text-white"]) {
   color: #ffffff !important;
+}
+
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) :is(p, li, span, label, small, [class*="text-slate"], [class*="text-blue"], [class*="text-cyan"]):not([class*="bg-clip-text"]) {
+  color: #cfe3f4 !important;
+}
+
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) :is([class*="bg-clip-text"], .text-gradient-cyan) {
+  background: linear-gradient(135deg, #7fdcff, #9ec5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) :is([class*="bg-white/"], [class*="bg-slate-"]) {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) :is([class*="border-white/"], [class*="border-slate-"]) {
+  border-color: rgba(143, 200, 240, 0.18);
+}
+
+:is(.glass, .glass-strong):not(a, button, .cs-dark-panel) .liquid-glass-icon {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(143, 200, 240, 0.25);
+  box-shadow: none;
+}
+
+/* Solution Modules: white section with dark module cards */
+#services {
+  background: var(--lt-bg);
+  color: var(--lt-ink);
+}
+
+#services h2 {
+  color: var(--lt-ink) !important;
   background-image: none !important;
 }
 
 #services h2 span {
-  background: linear-gradient(90deg, #7fdcff, #9ec5ff 55%, #c4b5fd);
+  background: linear-gradient(90deg, #1b5fa0, #0a7f8c);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 #services p {
+  color: var(--lt-ink-soft);
+}
+
+#services .group h3 {
+  color: #ffffff !important;
+  background-image: none !important;
+}
+
+#services .group p {
   color: #bcd2e3;
 }
 
 #services span.rounded-full {
-  background: rgba(68, 136, 255, 0.14);
-  border-color: rgba(120, 170, 255, 0.35);
-  color: #cfe2ff;
+  background: #eaf2fb;
+  border-color: rgba(27, 95, 160, 0.25);
+  color: var(--lt-accent);
 }
 
 #services .group {
@@ -443,7 +479,7 @@ nav .bg-blue-500 {
   box-shadow: 0 18px 40px rgba(2, 12, 24, 0.35);
 }
 
-#services ul li {
+#services .group ul li {
   color: #d2e3ef;
 }
 
