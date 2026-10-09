@@ -4,7 +4,6 @@ const SELECTORS = {
   navAnchors: ".nav-links a",
   reveal: ".reveal",
   counters: ".count-up",
-  cursorGlow: ".cursor-glow",
   sections: "main section[id], section#contact"
 };
 
@@ -156,37 +155,12 @@ function setupActiveNavTracking() {
   sections.forEach((section) => observer.observe(section));
 }
 
-function setupCursorGlow() {
-  const glow = document.querySelector(SELECTORS.cursorGlow);
-  if (!glow || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return;
-  }
-
-  let raf = 0;
-  let currentX = window.innerWidth / 2;
-  let currentY = window.innerHeight / 2;
-
-  function render() {
-    glow.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
-    raf = 0;
-  }
-
-  window.addEventListener("pointermove", (event) => {
-    currentX = event.clientX;
-    currentY = event.clientY;
-    if (!raf) {
-      raf = requestAnimationFrame(render);
-    }
-  });
-}
-
 function init() {
   setupMenu();
   setupSmoothAnchors();
   setupReveal();
   setupCounters();
   setupActiveNavTracking();
-  setupCursorGlow();
 }
 
 document.addEventListener("DOMContentLoaded", init);

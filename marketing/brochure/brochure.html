@@ -167,21 +167,21 @@
   .case-card .metrics .ml { font-size: 6.6px; color: var(--ink-faint); text-transform: uppercase; }
 
   .map-wrap { position: relative; border-radius: 9px; overflow: hidden; border: 1px solid var(--line); height: 56mm; }
-  .map-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
+  .map-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
   .map-caption {
     position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(0deg, rgba(6,11,22,0.92), transparent);
-    padding: 5mm 6mm 4mm 6mm; font-size: 8.6px; color: var(--ink-dim);
+    background: rgba(6,11,22,0.88);
+    padding: 3mm 6mm; font-size: 8.6px; color: var(--ink-dim);
   }
   .map-caption b { color: var(--cyan); }
 
   .cta-band {
     position: relative; z-index: 2;
-    margin: 6mm 12mm 0 12mm;
+    margin: 5mm 12mm 0 12mm;
     border-radius: 10px;
     border: 1px solid rgba(34,211,238,0.3);
     background: linear-gradient(135deg, rgba(34,211,238,0.10), rgba(59,130,246,0.08));
-    padding: 6mm 7mm;
+    padding: 4mm 7mm;
     display: flex; align-items: center; justify-content: space-between;
   }
   .cta-band h3 { margin: 0 0 3px 0; font-size: 13.5px; font-weight: 800; }
@@ -329,7 +329,7 @@
   <div class="section" style="margin-top: 6mm;">
     <div class="section-title"><span class="num">05</span><h2>Global Customer Engagement</h2></div>
     <div class="map-wrap">
-      <img src="assets/Worldmap.png" alt="Control Standards global customer engagement map" />
+      <img src="assets/site-map.png" alt="Control Standards global customer engagement map showing routes from Bengaluru to 35+ countries" />
       <div class="map-caption"><b>One Bengaluru-based engineering team</b> — trusted by customers across 35+ countries including Germany, USA, UK, UAE, Singapore, South Africa, and Southeast Asia.</div>
     </div>
   </div>
