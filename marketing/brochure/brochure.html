@@ -19,6 +19,7 @@
     --line: rgba(15,23,42,0.12);
     --accent: #1b5fa0;
     --tile-top: #17486f;
+  --tile-solid: #12385b;
     --tile-bottom: #0c2a46;
     --tile-ink: #cfe3f4;
     --tile-hi: #8fe9ff;
@@ -74,24 +75,24 @@
     overflow: hidden;
     height: 88mm;
     border: 1px solid var(--line);
-    color: #e7edf5;
+    color: var(--ink);
   }
-  .hero img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05) brightness(0.85); }
+  .hero img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05) brightness(1.02); }
   .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(6,11,22,0.25) 0%, rgba(6,11,22,0.55) 55%, rgba(6,11,22,0.96) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 55%, rgba(255,255,255,0.15) 100%);
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 8mm 9mm;
   }
   .hero-eyebrow {
     font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--cyan); margin-bottom: 6px;
+    color: var(--accent); margin-bottom: 6px;
   }
   .hero h1 {
     font-size: 25px; line-height: 1.15; font-weight: 800; margin: 0 0 6px 0; max-width: 150mm;
   }
-  .hero h1 span { color: var(--cyan); }
-  .hero p { margin: 0; font-size: 11px; color: #cbd5e1; max-width: 145mm; line-height: 1.5; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { margin: 0; font-size: 11px; color: var(--ink-dim); max-width: 145mm; line-height: 1.5; }
 
   /* stat strip */
   .stats {
@@ -99,7 +100,7 @@
     margin: 6mm 12mm 0 12mm;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm;
   }
-  .stat { text-align: center; border: 1px solid var(--tile-edge); border-radius: 8px; padding: 5mm 2mm; background: linear-gradient(160deg, var(--tile-top) 0%, var(--tile-bottom) 100%); }
+  .stat { text-align: center; border: 1px solid var(--tile-edge); border-radius: 8px; padding: 5mm 2mm; background: var(--tile-solid); }
   .stat .v { font-size: 20px; font-weight: 800; color: var(--tile-hi); font-family: 'IBM Plex Mono', monospace; }
   .stat .l { font-size: 7.5px; color: var(--tile-ink); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
 
@@ -112,14 +113,14 @@
 
   /* why-choose cards */
   .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; }
-  .why-card { border: 1px solid var(--tile-edge); border-radius: 9px; padding: 5mm 4mm; background: linear-gradient(160deg, var(--tile-top) 0%, var(--tile-bottom) 100%); }
+  .why-card { border: 1px solid var(--tile-edge); border-radius: 9px; padding: 5mm 4mm; background: var(--tile-solid); }
   .why-card .ico { width: 24px; height: 24px; border-radius: 7px; background: linear-gradient(135deg, var(--cyan), var(--blue)); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; color:#04141c; margin-bottom: 4px; }
   .why-card h3 { font-size: 10.5px; margin: 0 0 3px 0; font-weight: 700; color: #ffffff; }
   .why-card p { font-size: 8.3px; color: var(--tile-ink); line-height: 1.45; margin: 0; }
 
   /* services grid */
   .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5mm; }
-  .svc-card { border: 1px solid var(--tile-edge); border-radius: 9px; padding: 4.5mm; background: linear-gradient(160deg, var(--tile-top) 0%, var(--tile-bottom) 100%); }
+  .svc-card { border: 1px solid var(--tile-edge); border-radius: 9px; padding: 4.5mm; background: var(--tile-solid); }
   .svc-card h3 { font-size: 10px; margin: 0 0 3px 0; color: var(--tile-hi); font-weight: 700; }
   .svc-card p { font-size: 8.2px; color: var(--tile-ink); line-height: 1.4; margin: 0; }
 
@@ -154,7 +155,7 @@
   .cmp-table td.typ::before { content: "— "; color: #64748b; }
 
   .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5mm; }
-  .case-card { border: 1px solid var(--tile-edge); border-radius: 9px; padding: 4.5mm; background: linear-gradient(160deg, var(--tile-top) 0%, var(--tile-bottom) 100%); }
+  .case-card { border: 1px solid var(--tile-edge); border-radius: 9px; padding: 4.5mm; background: var(--tile-solid); }
   .case-card .tag { font-family:'IBM Plex Mono',monospace; font-size: 7px; color: var(--tile-hi); text-transform: uppercase; letter-spacing: 0.08em; }
   .case-card h3 { font-size: 9.6px; margin: 3px 0 4px 0; font-weight: 700; line-height: 1.3; color: #ffffff; }
   .case-card .metrics { display:flex; gap: 5mm; margin-top: 4px; }
@@ -176,7 +177,7 @@
     margin: 5mm 12mm 0 12mm;
     border-radius: 10px;
     border: 1px solid var(--tile-edge);
-    background: linear-gradient(160deg, var(--tile-top) 0%, var(--tile-bottom) 100%);
+    background: var(--tile-solid);
     color: #ffffff;
     padding: 4mm 7mm;
     display: flex; align-items: center; justify-content: space-between;
